@@ -30,9 +30,9 @@ public class PlayerController : MonoBehaviour {
 
 		myRigidbody.AddForce (movement * movementSpeed);
 
-
+		// Just for debugging reasons!
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, 10);
+			myRigidbody.velocity = new Vector2 (myRigidbody.velocity.x, jumpForce);
 		}
 			
 	}

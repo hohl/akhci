@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-	public PlayerController player;
+	public float cameraSpeed;
 
+	private PlayerController player;
 	private Vector3 lastPlayerPosition;
 
 	// Use this for initialization
@@ -13,13 +14,18 @@ public class CameraController : MonoBehaviour {
 		player = FindObjectOfType<PlayerController> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	// Camera that follows the character
+//	void Update () {
+//
+//		float distanceToMove = player.transform.position.y - lastPlayerPosition.y;
+//
+//		transform.position = new Vector3 (transform.position.x, transform.position.y + distanceToMove, transform.position.z);
+//
+//		lastPlayerPosition = player.transform.position;
+//	}
 
-		float distanceToMove = player.transform.position.y - lastPlayerPosition.y;
+	void Update() {
 
-		transform.position = new Vector3 (transform.position.x, transform.position.y + distanceToMove, transform.position.z);
-
-		lastPlayerPosition = player.transform.position;
+		transform.position = new Vector3 (transform.position.x, transform.position.y - cameraSpeed * Time.deltaTime, transform.position.z);
 	}
 }
