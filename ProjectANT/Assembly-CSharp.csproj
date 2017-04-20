@@ -46,28 +46,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Ant.cs" />
-     <Compile Include="Assets\Scripts\AntAlgorithmSimple.cs" />
-     <Compile Include="Assets\Scripts\AntInteraction.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\Ant.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\AntAlgorithmSimple.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\AntInteraction.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\ChoiceInfo.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\City.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\Distances.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\Pheromones.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\TSPImporter.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\ChoiceInfo.cs" />
-     <Compile Include="Assets\Scripts\City.cs" />
      <Compile Include="Assets\Scripts\ControllingCameraAspectScript.cs" />
-     <Compile Include="Assets\Scripts\Distances.cs" />
-     <Compile Include="Assets\Scripts\Pheromones.cs" />
+     <Compile Include="Assets\Scripts\PlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\TSPImporter.cs" />
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.PlaymodeTestsRunner">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <Reference Include="UnityEngine.PlaymodeTestsRunner">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
