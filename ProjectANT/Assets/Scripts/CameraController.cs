@@ -11,8 +11,7 @@ public class CameraController : MonoBehaviour {
 
 	private GameObject leftWall;
 	private GameObject rightWall;
-
-
+	public GameObject endCollider;
 
 	void Start () {
 		//player = FindObjectOfType<PlayerController> ();
