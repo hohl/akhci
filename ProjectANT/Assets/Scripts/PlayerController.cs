@@ -60,12 +60,24 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.acceleration.x > 0.1f || Input.GetKey("d"))
 		{
-			direction = 1;
+			if (myRigidbody.velocity.x < 0) {
+				direction = 2;
+			} else {
+				direction = 1;
+			}
+
+
 		}
 		else if (Input.acceleration.x < -0.1f || Input.GetKey("a"))
 		{
-			direction -= 1;
+			if (myRigidbody.velocity.x > 0) {
+				direction = -2;
+			} else {
+				direction = -1;
+			}
 		}
+
+
 		Vector2 movement = new Vector2(direction, 0);
 
 		myRigidbody.AddForce(movement * movementSpeed);
