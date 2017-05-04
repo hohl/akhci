@@ -19,7 +19,8 @@ public class PlatformController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		generator = new PlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
+		generator = new SimplePlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
+		//generator = new RandomPlatformGenerator ();
 		CalculateCorridorValues();
 		platformHeight = startPlatform.GetComponent<BoxCollider2D>().size.y;
 	}
@@ -59,7 +60,7 @@ public class PlatformController : MonoBehaviour
 
 	private void CreatePlatform (float x, float width)
 	{
-		Vector3 middlePlatformPosition = new Vector3 (corridorStart + x * corridorWidth - corridorWidth / 2 + width / 2, transform.position.y, startPlatform.transform.position.z);
+		Vector3 middlePlatformPosition = new Vector3 (corridorStart + x * corridorWidth + width * corridorWidth / 2, transform.position.y, startPlatform.transform.position.z);
 		GameObject middlePlatform = Instantiate (startPlatform, middlePlatformPosition, transform.rotation);
 		middlePlatform.name = String.Format ("Platform(x: {0}, width: {1})", x, width);
 		middlePlatform.transform.localScale = new Vector3 (width * corridorWidth, startPlatform.transform.localScale.y, startPlatform.transform.localScale.z);
