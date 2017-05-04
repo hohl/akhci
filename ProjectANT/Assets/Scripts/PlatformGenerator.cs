@@ -3,44 +3,9 @@ using System.Collections.Generic;
 using AntAlgorithms;
 using UnityEngine;
 
-public class PlatformGenerator
+public abstract class PlatformGenerator
 {
-	private static System.Random rand = new System.Random();
-
-	private AntAlgorithmSimple algo;
-	private List<City> cities = new List<City> ();
-	private GameObject cityGameObject;
-
-	public PlatformGenerator (AntAlgorithmSimple algo)
-	{
-		this.algo = algo;
-		cityGameObject = new GameObject();
-		Load ();
-	}
-
-	public Result Next ()
-	{
-		// TODO: return real values there!!!
-		return new Result((float)rand.NextDouble() * 0.3f + 0.1f, (float)rand.NextDouble() * 0.3f + 0.6f);
-	}
-
-	private void Load ()
-	{
-		cities.Add(new City(2, 4, 0, "Vienna", cityGameObject));
-		cities.Add(new City(1, 9, 1, "Graz", cityGameObject));
-		cities.Add(new City(3, 8, 2, "Klagenfurt", cityGameObject));
-		cities.Add(new City(9, 1, 3, "Innsbruck", cityGameObject));
-		cities.Add(new City(10, 1, 4, "Innsbruck", cityGameObject));
-
-		cities.Add(new City(5, 4, 5, "Vienna", cityGameObject));
-		cities.Add(new City(1, 11, 6, "Graz", cityGameObject));
-		cities.Add(new City(3, 4, 7, "Klagenfurt", cityGameObject));
-
-		algo.setCities(cities);
-		algo.init();
-		for (int i = 0; i < 50; i++)
-			algo.iteration();
-	}
+	public abstract Result Next ();
 
 	public class Result
 	{
