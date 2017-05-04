@@ -7,7 +7,7 @@
  *****************************************************/
 
 /* AntAlgorithSimpleTest */
-
+/*
 using UnityEngine;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -222,3 +222,4 @@ public class AntAlgorithmSimpleTest
 		Assert.True(true);
 	}
 }
+*/

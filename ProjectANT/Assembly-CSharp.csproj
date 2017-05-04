@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AntAlgorithm\Ant.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithm\AntAlgorithmSimple.cs" />
+     <Compile Include="Assets\Scripts\AntAlgorithm\AntAlgorithmSimpleTest.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithm\AntInteraction.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithm\ChoiceInfo.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithm\City.cs" />
@@ -56,19 +57,22 @@
      <Compile Include="Assets\Scripts\AntAlgorithm\TSPImporter.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ControllingCameraAspectScript.cs" />
+     <Compile Include="Assets\Scripts\EmptyClass.cs" />
+     <Compile Include="Assets\Scripts\PauseController.cs" />
+     <Compile Include="Assets\Scripts\PlatformController.cs" />
      <Compile Include="Assets\Scripts\PlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.PlaymodeTestsRunner">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
