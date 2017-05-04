@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject playerCamera;
 
 	private CameraController cameraCont;
+	private PauseController pauseCont;
 	private Rigidbody2D myRigidbody;
 
 	// Use this for initialization
@@ -16,30 +18,39 @@ public class PlayerController : MonoBehaviour {
 		myRigidbody = GetComponent<Rigidbody2D> ();
 		// should we create a gamecontroller for that
 		cameraCont = playerCamera.GetComponent<CameraController>();
+		pauseCont = GetComponent<PauseController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!cameraCont.IsGameOver())
+		if (!pauseCont.IsPaused())
 		{
-			int direction = 0;
-
-			if (Input.acceleration.x > 0.1f || Input.GetKey("d"))
+			if (!cameraCont.IsGameOver())
 			{
-				direction = 1;
+				MoveCharacter();
 			}
-			else if (Input.acceleration.x < -0.1f || Input.GetKey("a"))
+			else
 			{
-				direction -= 1;
+				myRigidbody.gameObject.SetActive(false);
 			}
-			Vector2 movement = new Vector2(direction, 0);
-
-			myRigidbody.AddForce(movement * movementSpeed);
 		}
-		else
+	}
+
+	private void MoveCharacter()
+	{
+		int direction = 0;
+
+		if (Input.acceleration.x > 0.1f || Input.GetKey("d"))
 		{
-			myRigidbody.gameObject.SetActive(false);
+			direction = 1;
 		}
+		else if (Input.acceleration.x < -0.1f || Input.GetKey("a"))
+		{
+			direction -= 1;
+		}
+		Vector2 movement = new Vector2(direction, 0);
+
+		myRigidbody.AddForce(movement * movementSpeed);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
