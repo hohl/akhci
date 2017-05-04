@@ -13,6 +13,9 @@ public class CameraController : MonoBehaviour {
 	private GameObject rightWall;
 	public GameObject endCollider;
 
+	// should we create a game/levelcontroller for that?
+	private bool gameOver = false;
+
 	void Start () {
 		//player = FindObjectOfType<PlayerController> ();
 		leftWall = GameObject.Find("LeftWall");
@@ -22,10 +25,12 @@ public class CameraController : MonoBehaviour {
 
 	// Auto Moving Camera
 	void Update() {
-
-		MoveGameObjectDown (this.gameObject);
-		MoveGameObjectDown (leftWall);
-		MoveGameObjectDown (rightWall);
+		if (!gameOver)
+		{
+			MoveGameObjectDown(this.gameObject);
+			MoveGameObjectDown(leftWall);
+			MoveGameObjectDown(rightWall);
+		}
 	}
 
 	private void MoveGameObjectDown(GameObject go) {
@@ -37,6 +42,15 @@ public class CameraController : MonoBehaviour {
 		
 	}
 
+	public void SetGameOver(bool over)
+	{
+		gameOver = over;
+	}
+
+	public bool IsGameOver()
+	{
+		return gameOver;
+	}
 
 	// Camera that follows the character
 	//	void Update () {
