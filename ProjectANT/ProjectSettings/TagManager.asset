@@ -8,6 +8,7 @@ TagManager:
   - PauseMenu
   - EndMenu
   - Bottom
+  - Gap
   layers:
   - Default
   - TransparentFX

@@ -11,12 +11,13 @@ public class PlayerController : MonoBehaviour {
 	public float jumpForce;
 	public GameObject playerCamera;
 	public GameObject menuEnd;
-
+	public GameObject platformControllerObject;
 
 	private CameraController cameraCont;
 	private PauseController pauseCont;
 	private Rigidbody2D myRigidbody;
 	private Button restartButton;
+	private PlatformController platformCont;
 
 	// Use this for initialization
 	void Start () {
@@ -24,9 +25,9 @@ public class PlayerController : MonoBehaviour {
 		// should we create a gamecontroller for that
 		cameraCont = playerCamera.GetComponent<CameraController>();
 		pauseCont = GetComponent<PauseController>();
-
 		restartButton = menuEnd.GetComponentInChildren<Button>(true);
 		restartButton.onClick.AddListener(RestartGame);
+		platformCont = platformControllerObject.GetComponent<PlatformController> ();
 	}
 	
 	// Update is called once per frame
@@ -76,6 +77,12 @@ public class PlayerController : MonoBehaviour {
 		{
 			Debug.Log("DEAD!!!!");
 			cameraCont.SetGameOver(true);
+		}
+
+		if (other.CompareTag ("Gap"))
+		{
+			GapController gapController = other.GetComponent<GapController> ();
+			platformCont.Select(gapController.City);
 		}
 	}
 }
