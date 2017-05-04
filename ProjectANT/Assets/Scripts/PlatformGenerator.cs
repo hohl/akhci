@@ -16,7 +16,11 @@ public class PlatformGenerator
 		Load ();
 	}
 
-
+	public Result Next ()
+	{
+		// TODO: return real values there!!!
+		return new Result(0.25f, 0.75f);
+	}
 
 	private void Load ()
 	{
@@ -34,5 +38,19 @@ public class PlatformGenerator
 		algo.init();
 		for (int i = 0; i < 50; i++)
 			algo.iteration();
+	}
+
+	public class Result
+	{
+		public float first { get; private set; }
+		public float firstWidth = 0.1f;
+		public float second { get; private set; }
+		public float secondWidth = 0.1f;
+
+		public Result(float first, float second)
+		{
+			this.first = first;
+			this.second = second;
+		}
 	}
 }
