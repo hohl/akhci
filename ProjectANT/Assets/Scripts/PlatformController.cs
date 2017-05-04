@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformController : MonoBehaviour {
-
+public class PlatformController : MonoBehaviour 
+{
 	public Transform generationPoint;
 	public float distanceBetweenPlatforms;
 
@@ -15,27 +15,27 @@ public class PlatformController : MonoBehaviour {
 
 	private bool left = false;
 
+	private PlatformGenerator generator;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+		generator = new PlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
 		CalculateCorridorValues();
-
-
 		platformHeight = startPlatform.GetComponent<BoxCollider2D>().size.y;
 	}
 
-	private void CalculateCorridorValues() {
-
+	private void CalculateCorridorValues() 
+	{
 		GameObject leftWall = GameObject.Find("LeftWall");
 		GameObject rightWall = GameObject.Find("RightWall");
 
 		corridorStart = leftWall.transform.position.x + leftWall.transform.localScale.x;
 		corridorWidth = (rightWall.transform.position.x - rightWall.transform.localScale.x) - corridorStart;
-
-
 	}
 
-	void Update() {
-		
+	void Update()
+	{
 		if (transform.position.y > generationPoint.position.y) {
 
 			transform.position = new Vector3 (
