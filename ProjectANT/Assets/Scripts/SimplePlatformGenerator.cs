@@ -8,6 +8,8 @@ public class SimplePlatformGenerator : PlatformGenerator
 	private AntAlgorithmSimple algo;
 	private List<City> cities = new List<City> ();
 	private GameObject cityGameObject;
+	private bool nextIsBuffer = true;
+	private int startCity = 0;
 
 	public SimplePlatformGenerator (AntAlgorithmSimple algo)
 	{
@@ -18,7 +20,16 @@ public class SimplePlatformGenerator : PlatformGenerator
 
 	public override Result Next ()
 	{
-		return new Result(0.2f, 0.2f);
+		if (nextIsBuffer) 
+		{
+			nextIsBuffer = false;
+			return new Result (-0.2f, NO_CITY, 0.5f, NO_CITY);
+		}
+		else 
+		{
+			nextIsBuffer = true;
+			return FindBestForCity(startCity);
+		}
 	}
 
 	private void Load ()
@@ -37,5 +48,31 @@ public class SimplePlatformGenerator : PlatformGenerator
 		algo.init();
 		for (int i = 0; i < 50; i++)
 			algo.iteration();
+	}
+
+	public Result FindBestForCity (int startCity)
+	{
+		int firstCity = NO_CITY;
+		float firstPheromons = 0.0f;
+		int secondCity = NO_CITY;
+		float secondPheromons = 0.0f;
+		for (int targetCity = 0; targetCity < cities.Count; ++targetCity) {
+			float pheromons = (float) algo.getPheromones ().getPheromone (startCity, targetCity);
+			if (firstPheromons < pheromons) {
+				secondCity = firstCity;
+				secondPheromons = firstPheromons;
+				firstCity = targetCity;
+				firstPheromons = pheromons;
+			} else if (secondPheromons < pheromons) {
+				secondCity = targetCity;
+				secondPheromons = pheromons;
+			}
+		}
+
+		// normalize!
+		firstPheromons = 0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.1f;
+		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
+
+		return new Result (firstPheromons, firstCity, secondPheromons, secondCity);
 	}
 }
