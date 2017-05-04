@@ -73,6 +73,9 @@ public class SimplePlatformGenerator : PlatformGenerator
 		firstPheromons = 0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.1f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
 
+		// TEMP: next time start from the left one
+		startCity = firstCity;
+
 		return new Result (firstPheromons, firstCity, secondPheromons, secondCity);
 	}
 }
