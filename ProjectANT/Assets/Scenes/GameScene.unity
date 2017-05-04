@@ -1793,6 +1793,7 @@ MonoBehaviour:
   movementSpeed: 15
   jumpForce: 10
   playerCamera: {fileID: 1344020036}
+  menuEnd: {fileID: 1824807958}
 --- !u!114 &1209420170
 MonoBehaviour:
   m_ObjectHideFlags: 0

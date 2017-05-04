@@ -2,16 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
 	public float movementSpeed;
 	public float jumpForce;
 	public GameObject playerCamera;
+	public GameObject menuEnd;
+
 
 	private CameraController cameraCont;
 	private PauseController pauseCont;
 	private Rigidbody2D myRigidbody;
+	private Button restartButton;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +24,9 @@ public class PlayerController : MonoBehaviour {
 		// should we create a gamecontroller for that
 		cameraCont = playerCamera.GetComponent<CameraController>();
 		pauseCont = GetComponent<PauseController>();
+
+		restartButton = menuEnd.GetComponentInChildren<Button>(true);
+		restartButton.onClick.AddListener(RestartGame);
 	}
 	
 	// Update is called once per frame
@@ -32,8 +40,17 @@ public class PlayerController : MonoBehaviour {
 			else
 			{
 				myRigidbody.gameObject.SetActive(false);
+				menuEnd.SetActive(true);
 			}
 		}
+	}
+
+	private void RestartGame()
+	{
+		//myRigidbody.gameObject.SetActive(false);
+		menuEnd.SetActive(false);
+		int scene = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene(scene, LoadSceneMode.Single);
 	}
 
 	private void MoveCharacter()
