@@ -5,7 +5,6 @@ using UnityEngine;
 
 /// Source
 /// http://answers.unity3d.com/questions/618058/mobile-device-screen-sizes.html
-
 public class ControllingCameraAspectScript : MonoBehaviour
 {
 

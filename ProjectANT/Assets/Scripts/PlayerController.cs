@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			Debug.Log("DEAD!!!!");
 			cameraCont.SetGameOver(true);
+			pauseCont.SetGameOver(true);
 		}
 
 //		if (other.CompareTag ("Gap"))

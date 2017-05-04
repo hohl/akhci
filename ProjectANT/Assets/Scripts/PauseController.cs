@@ -8,8 +8,11 @@ public class PauseController : MonoBehaviour
 {
 	private bool paused = false;
 	public GameObject menuPause;
+	public Button pauseButton; // for now: whole screen
+
 	private Button buttonContinue;
 	private Button buttonRestart;
+	private bool gameOver = false;
 
 	void Start()
 	{
@@ -28,6 +31,7 @@ public class PauseController : MonoBehaviour
 
 		buttonContinue.onClick.AddListener(PauseGame);
 		buttonRestart.onClick.AddListener(RestartCurrentScene);
+		pauseButton.onClick.AddListener(PauseGame);
 	}
 
 	void Update()
@@ -40,17 +44,21 @@ public class PauseController : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if (paused)
+		if (!gameOver)
 		{
-			Time.timeScale = 1f;
-			menuPause.SetActive(false);
-			paused = false;
-		}
-		else
-		{
-			Time.timeScale = 0f;
-			menuPause.SetActive(true);
-			paused = true;
+			if (paused)
+			{
+				Time.timeScale = 1f;
+				paused = false;
+			}
+			else
+			{
+				Time.timeScale = 0f;
+				paused = true;
+			}
+
+			menuPause.SetActive(paused);
+			pauseButton.gameObject.SetActive(!paused);
 		}
 	}
 
@@ -64,5 +72,11 @@ public class PauseController : MonoBehaviour
 	public bool IsPaused()
 	{
 		return paused;
+	}
+
+	public void SetGameOver(bool gameOver)
+	{
+		this.gameOver = gameOver;
+		pauseButton.gameObject.SetActive(false);
 	}
 }
