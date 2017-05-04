@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class PlatformGenerator
 {
-	public const int NO_CITY = -1;
+	public City SelectedCity { get; set; }
 
 	public abstract Result Next ();
 
@@ -13,12 +13,12 @@ public abstract class PlatformGenerator
 	{
 		public float first { get; private set; }
 		public float firstWidth = 0.2f;
-		public int firstCity;
+		public City firstCity;
 		public float second { get; private set; }
 		public float secondWidth = 0.2f;
-		public int secondCity;
+		public City secondCity;
 
-		public Result(float first, int firstCity, float second, int secondCity)
+		public Result(float first, City firstCity, float second, City secondCity)
 		{
 			this.first = first;
 			this.firstCity = firstCity;

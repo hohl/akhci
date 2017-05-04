@@ -9,7 +9,6 @@ public class SimplePlatformGenerator : PlatformGenerator
 	private List<City> cities = new List<City> ();
 	private GameObject cityGameObject;
 	private bool nextIsBuffer = true;
-	private int startCity = 0;
 
 	public SimplePlatformGenerator (AntAlgorithmSimple algo)
 	{
@@ -23,12 +22,12 @@ public class SimplePlatformGenerator : PlatformGenerator
 		if (nextIsBuffer) 
 		{
 			nextIsBuffer = false;
-			return new Result (-0.2f, NO_CITY, 0.5f, NO_CITY);
+			return new Result (-0.2f, null, 0.5f, null);
 		}
 		else 
 		{
 			nextIsBuffer = true;
-			return FindBestForCity(startCity);
+			return FindBestForCity(SelectedCity);
 		}
 	}
 
@@ -44,37 +43,41 @@ public class SimplePlatformGenerator : PlatformGenerator
 		cities.Add(new City(1, 11, 6, "Graz", cityGameObject));
 		cities.Add(new City(3, 4, 7, "Klagenfurt", cityGameObject));
 
+		SelectedCity = cities [0];
+
 		algo.setCities(cities);
 		algo.init();
 		for (int i = 0; i < 50; i++)
 			algo.iteration();
 	}
 
-	public Result FindBestForCity (int startCity)
+	public Result FindBestForCity (City startCity)
 	{
-		int firstCity = NO_CITY;
+		int startCityIndex = cities.IndexOf (startCity);
+
+		City firstCity = null;
 		float firstPheromons = 0.0f;
-		int secondCity = NO_CITY;
+		City secondCity = null;
 		float secondPheromons = 0.0f;
-		for (int targetCity = 0; targetCity < cities.Count; ++targetCity) {
-			float pheromons = (float) algo.getPheromones ().getPheromone (startCity, targetCity);
+		for (int targetCityIndex = 0; targetCityIndex < cities.Count; ++targetCityIndex) {
+			if (startCityIndex == targetCityIndex)
+				continue;
+
+			float pheromons = (float) algo.getPheromones ().getPheromone (startCityIndex, targetCityIndex);
 			if (firstPheromons < pheromons) {
 				secondCity = firstCity;
 				secondPheromons = firstPheromons;
-				firstCity = targetCity;
+				firstCity = cities[targetCityIndex];
 				firstPheromons = pheromons;
 			} else if (secondPheromons < pheromons) {
-				secondCity = targetCity;
+				secondCity = cities[targetCityIndex];
 				secondPheromons = pheromons;
 			}
 		}
 
-		// normalize!
+		// normalize values! [0..1]
 		firstPheromons = 0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.1f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
-
-		// TEMP: next time start from the left one
-		startCity = firstCity;
 
 		return new Result (firstPheromons, firstCity, secondPheromons, secondCity);
 	}

@@ -6,6 +6,6 @@ public class RandomPlatformGenerator : PlatformGenerator
 
 	public override Result Next ()
 	{
-		return new Result((float)rand.NextDouble() * 0.3f + 0.1f, NO_CITY, (float)rand.NextDouble() * 0.3f + 0.6f, NO_CITY);
+		return new Result((float)rand.NextDouble() * 0.3f + 0.1f, null, (float)rand.NextDouble() * 0.3f + 0.6f, null);
 	}
 }
