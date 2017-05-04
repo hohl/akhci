@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlatformGenerator
 {
+	private static System.Random rand = new System.Random();
+
 	private AntAlgorithmSimple algo;
 	private List<City> cities = new List<City> ();
 	private GameObject cityGameObject;
@@ -19,7 +21,7 @@ public class PlatformGenerator
 	public Result Next ()
 	{
 		// TODO: return real values there!!!
-		return new Result(0.25f, 0.75f);
+		return new Result((float)rand.NextDouble() * 0.3f + 0.1f, (float)rand.NextDouble() * 0.3f + 0.6f);
 	}
 
 	private void Load ()
@@ -43,9 +45,9 @@ public class PlatformGenerator
 	public class Result
 	{
 		public float first { get; private set; }
-		public float firstWidth = 0.1f;
+		public float firstWidth = 0.2f;
 		public float second { get; private set; }
-		public float secondWidth = 0.1f;
+		public float secondWidth = 0.2f;
 
 		public Result(float first, float second)
 		{
