@@ -91,10 +91,10 @@ public class PlayerController : MonoBehaviour {
 			cameraCont.SetGameOver(true);
 		}
 
-		if (other.CompareTag ("Gap"))
-		{
-			GapController gapController = other.GetComponent<GapController> ();
-			platformCont.Select(gapController.City);
-		}
+//		if (other.CompareTag ("Gap"))
+//		{
+//			GapController gapController = other.GetComponent<GapController> ();
+//			platformCont.Select(gapController.City);
+//		}
 	}
 }
