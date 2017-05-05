@@ -98,7 +98,10 @@ public class PlayerController : MonoBehaviour
 		if (other.CompareTag ("Gap"))
 		{
 			GapController gapController = other.GetComponent<GapController> ();
-			platformCont.Select (gapController.City);
+			if (gapController != null) 
+			{
+				platformCont.Select (gapController.City);
+			}
 		}
 	}
 }

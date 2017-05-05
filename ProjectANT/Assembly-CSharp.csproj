@@ -58,9 +58,11 @@
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ControllingCameraAspectScript.cs" />
      <Compile Include="Assets\Scripts\EndPlatformController.cs" />
+     <Compile Include="Assets\Scripts\Gap.cs" />
      <Compile Include="Assets\Scripts\GapController.cs" />
      <Compile Include="Assets\Scripts\InvisibleTouchable.cs" />
      <Compile Include="Assets\Scripts\PauseController.cs" />
+     <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\PlatformController.cs" />
      <Compile Include="Assets\Scripts\PlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

@@ -38,7 +38,7 @@ public class PlatformController : MonoBehaviour
 	{
 		if (transform.position.y > generationPoint.position.y)
 		{
-			var next = generator.Next ();
+			Platform next = generator.Next ();
 
 			transform.position = new Vector3 (
 				transform.position.x,
@@ -46,18 +46,18 @@ public class PlatformController : MonoBehaviour
 				transform.position.z);
 
 			float x1 = 0.0f;
-			float width1 = next.first - next.firstWidth / 2;
+			float width1 = next.FirstGap.Position - next.FirstGap.Width / 2;
 			CreatePlatform (x1, width1);
 
-			CreateTrigger (next.first, next.firstWidth, next.firstCity);
+			CreateTrigger (next.FirstGap.Position, next.FirstGap.Width, next.FirstGap.City);
 
-			float x2 = next.first + next.firstWidth / 2;
-			float width2 = (next.second - next.secondWidth / 2) - x2;
+			float x2 = next.FirstGap.Position + next.FirstGap.Width / 2;
+			float width2 = (next.SecondGap.Position - next.SecondGap.Width / 2) - x2;
 			CreatePlatform (x2, width2);
 
-			CreateTrigger (next.second, next.secondWidth, next.secondCity);
+			CreateTrigger (next.SecondGap.Position, next.SecondGap.Width, next.SecondGap.City);
 
-			float x3 = next.second + next.secondWidth / 2;
+			float x3 = next.SecondGap.Position + next.SecondGap.Width / 2;
 			float width3 = 1.0f - x3;
 			CreatePlatform (x3, width3);
 		}

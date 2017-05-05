@@ -35,7 +35,7 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 		Load ();
 	}
 
-	public override Result Next ()
+	public override Platform Next ()
 	{
 		if (SelectedCity == PreviousCity) 
 		{
@@ -45,13 +45,13 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 		else if (needsBuffer) 
 		{
 			needsBuffer = false;
-			return new Result (-0.2f, null, 0.5f, null);
+			return new Platform (new Gap (-0.2f, null), new Gap (0.5f, null));
 		}
 		else 
 		{
 			PreviousCity = SelectedCity;
 			needsBuffer = true;
-			return FindBestForCity(SelectedCity);
+			return FindBestForCity (SelectedCity);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 			algo.iteration();
 	}
 
-	public Result FindBestForCity (City startCity)
+	public Platform FindBestForCity (City startCity)
 	{
 		int startCityIndex = cities.IndexOf (startCity);
 
@@ -103,6 +103,6 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
 
-		return new Result (firstPheromons, firstCity, secondPheromons, secondCity);
+		return new Platform (new Gap (firstPheromons, firstCity), new Gap (secondPheromons, secondCity));
 	}
 }
