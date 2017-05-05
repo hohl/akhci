@@ -6,6 +6,10 @@ public class RandomPlatformGenerator : PlatformGenerator
 
 	public override Result Next ()
 	{
-		return new Result((float)rand.NextDouble() * 0.3f + 0.1f, null, (float)rand.NextDouble() * 0.3f + 0.6f, null);
+		const float buf = 0.25f; // <- minimum distance between two gaps
+
+		float first = (float)((0.5 - buf) * rand.NextDouble () + buf);
+		float second = (float)((1.0 - 2 * buf - first) * rand.NextDouble () + buf + first);
+		return new Result(first, null, second, null);
 	}
 }
