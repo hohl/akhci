@@ -76,7 +76,7 @@ public class SimplePlatformGenerator : PlatformGenerator
 		}
 
 		// normalize values! [0..1]
-		firstPheromons = 0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.1f;
+		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
 
 		return new Result (firstPheromons, firstCity, secondPheromons, secondCity);
