@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class PlatformGenerator
 {
-	public City SelectedCity { get; set; }
+	public virtual City SelectedCity { get; set; }
 
 	public abstract Result Next ();
 

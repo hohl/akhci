@@ -10,6 +10,19 @@ public class SimplePlatformGenerator : PlatformGenerator
 	private GameObject cityGameObject;
 	private bool nextIsBuffer = true;
 
+	public override City SelectedCity {
+		get {
+			return base.SelectedCity;
+		}
+		set {
+			City oldValue = base.SelectedCity;
+			base.SelectedCity = value;
+			if (oldValue != null) {
+				algo.getPheromones ().increasePheromone (oldValue.getId (), value.getId (), algo.q);
+			}
+		}
+	}
+
 	public SimplePlatformGenerator (AntAlgorithmSimple algo)
 	{
 		this.algo = algo;

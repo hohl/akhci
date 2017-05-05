@@ -70,8 +70,6 @@ public class PlayerController : MonoBehaviour
 			{
 				direction = 1;
 			}
-
-
 		}
 		else if (Input.acceleration.x < -0.1f || Input.GetKey("a"))
 		{

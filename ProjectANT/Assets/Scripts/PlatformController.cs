@@ -21,6 +21,7 @@ public class PlatformController : MonoBehaviour
 	{
 		if (city != null) // dummy layers just have the city set to null, just ignore them!
 		{
+			Debug.Log (String.Format("Selected city: {0}", city.getId ()));
 			generator.SelectedCity = city;
 		}
 	}
@@ -84,7 +85,6 @@ public class PlatformController : MonoBehaviour
 		GameObject trigger = Instantiate (startTrigger, position, transform.rotation);
 		trigger.name = String.Format ("Triger(pos: {0}, city: {2})", x, width, city == null ? -1 : city.getId());
 		trigger.transform.localScale = new Vector3 (width * corridorWidth, startPlatform.transform.localScale.y, startPlatform.transform.localScale.z);
-		GapController gapCont = trigger.AddComponent<GapController> ();
-		gapCont.City = city;
+		trigger.AddComponent<GapController> ().City = city;
 	}
 }
