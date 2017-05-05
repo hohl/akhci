@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using AntAlgorithms;
 using UnityEngine;
 
-public class SimplePlatformGenerator : PlatformGenerator
+public class SimplePlatformGenerator : RandomPlatformGenerator
 {
 	private AntAlgorithmSimple algo;
 	private List<City> cities = new List<City> ();
 	private GameObject cityGameObject;
-	private bool nextIsBuffer = true;
+	private bool needsBuffer = true;
 
 	public override City SelectedCity {
 		get {
@@ -23,6 +23,11 @@ public class SimplePlatformGenerator : PlatformGenerator
 		}
 	}
 
+	public City PreviousCity {
+		get;
+		private set;
+	}
+
 	public SimplePlatformGenerator (AntAlgorithmSimple algo)
 	{
 		this.algo = algo;
@@ -32,14 +37,20 @@ public class SimplePlatformGenerator : PlatformGenerator
 
 	public override Result Next ()
 	{
-		if (nextIsBuffer) 
+		if (SelectedCity == PreviousCity) 
 		{
-			nextIsBuffer = false;
+			needsBuffer = true;
+			return base.Next(); // just randomly choose one!
+		}
+		else if (needsBuffer) 
+		{
+			needsBuffer = false;
 			return new Result (-0.2f, null, 0.5f, null);
 		}
 		else 
 		{
-			nextIsBuffer = true;
+			PreviousCity = SelectedCity;
+			needsBuffer = true;
 			return FindBestForCity(SelectedCity);
 		}
 	}
