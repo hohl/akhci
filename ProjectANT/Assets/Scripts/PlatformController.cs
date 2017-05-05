@@ -19,7 +19,10 @@ public class PlatformController : MonoBehaviour
 
 	public void Select(City city)
 	{
-		generator.SelectedCity = city;
+		if (city != null) // dummy layers just have the city set to null, just ignore them!
+		{
+			generator.SelectedCity = city;
+		}
 	}
 
 	void Start ()

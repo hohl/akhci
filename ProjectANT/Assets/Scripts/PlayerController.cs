@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
 	public float movementSpeed;
 	public float jumpForce;
 	public GameObject playerCamera;
@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour {
 	private PlatformController platformCont;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		myRigidbody = GetComponent<Rigidbody2D> ();
 		// should we create a gamecontroller for that
 		cameraCont = playerCamera.GetComponent<CameraController>();
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (!pauseCont.IsPaused())
 		{
 			if (!cameraCont.IsGameOver())
@@ -60,9 +62,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.acceleration.x > 0.1f || Input.GetKey("d"))
 		{
-			if (myRigidbody.velocity.x < 0) {
+			if (myRigidbody.velocity.x < 0) 
+			{
 				direction = 2;
-			} else {
+			} 
+			else 
+			{
 				direction = 1;
 			}
 
@@ -92,10 +97,10 @@ public class PlayerController : MonoBehaviour {
 			pauseCont.SetGameOver(true);
 		}
 
-//		if (other.CompareTag ("Gap"))
-//		{
-//			GapController gapController = other.GetComponent<GapController> ();
-//			platformCont.Select(gapController.City);
-//		}
+		if (other.CompareTag ("Gap"))
+		{
+			GapController gapController = other.GetComponent<GapController> ();
+			platformCont.Select (gapController.City);
+		}
 	}
 }
