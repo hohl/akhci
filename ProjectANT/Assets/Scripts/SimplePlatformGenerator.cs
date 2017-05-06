@@ -86,12 +86,6 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 			algo.iteration();
 	}
 
-	private void Finish()
-	{
-		for (int i = 0; i < cities.Count; i++)
-			algo.iteration();
-	}
-
 	private void RecalcIfNeeded()
 	{
 		if (needsRecalcCounter == 0) {
