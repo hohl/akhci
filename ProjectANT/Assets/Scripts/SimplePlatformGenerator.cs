@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class SimplePlatformGenerator : RandomPlatformGenerator
 {
+	private const int PlayerFactor = Int32.MaxValue;
+	private const int RecalcInterval = 3;
+
 	private AntAlgorithmSimple algo;
 	private List<City> cities = new List<City> ();
 	private GameObject cityGameObject;
 	private bool needsBuffer = true;
+	private int needsRecalcCounter = RecalcInterval;
 
 	public override double Result {
 		get {
@@ -24,9 +28,8 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 			City oldValue = base.SelectedCity;
 			base.SelectedCity = value;
 			if (oldValue != null) {
-				algo.getPheromones ().increasePheromone (oldValue.getId (), value.getId (), Int32.MaxValue);
-				for (int i = 0; i < 25; i++)
-					algo.iteration();
+				algo.getPheromones ().increasePheromone (oldValue.getId (), value.getId (), PlayerFactor);
+				RecalcIfNeeded ();
 			}
 		}
 	}
@@ -79,14 +82,23 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 
 		algo.setCities(cities);
 		algo.init();
-		for (int i = 0; i < cities.Count * 2.5; i++)
+		for (int i = 0; i < cities.Count; i++)
 			algo.iteration();
 	}
 
 	private void Finish()
 	{
-		for (int i = 0; i < cities.Count * 2.5; i++)
+		for (int i = 0; i < cities.Count; i++)
 			algo.iteration();
+	}
+
+	private void RecalcIfNeeded()
+	{
+		if (needsRecalcCounter == 0) {
+			for (int i = 0; i < cities.Count; i++)
+				algo.iteration();
+			needsRecalcCounter = RecalcInterval;
+		}
 	}
 
 	public Platform FindBestForCity (City startCity)
