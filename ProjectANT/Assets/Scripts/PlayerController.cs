@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
 		if (other.CompareTag("End"))
 		{
 			Debug.Log("DEAD!!!!");
+			Debug.Log ("Result: " + platformCont.Result);
 			cameraCont.SetGameOver(true);
 			pauseCont.SetGameOver(true);
 		}

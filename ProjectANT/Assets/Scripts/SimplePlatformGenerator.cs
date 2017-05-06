@@ -10,6 +10,12 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 	private GameObject cityGameObject;
 	private bool needsBuffer = true;
 
+	public override double Result {
+		get {
+			return algo.getTourLength ();
+		}
+	}
+
 	public override City SelectedCity {
 		get {
 			return base.SelectedCity;
@@ -73,7 +79,13 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 
 		algo.setCities(cities);
 		algo.init();
-		for (int i = 0; i < 50; i++)
+		for (int i = 0; i < cities.Count * 2.5; i++)
+			algo.iteration();
+	}
+
+	private void Finish()
+	{
+		for (int i = 0; i < cities.Count * 2.5; i++)
 			algo.iteration();
 	}
 
