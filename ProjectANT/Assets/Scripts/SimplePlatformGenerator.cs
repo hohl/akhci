@@ -18,7 +18,9 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 			City oldValue = base.SelectedCity;
 			base.SelectedCity = value;
 			if (oldValue != null) {
-				algo.getPheromones ().increasePheromone (oldValue.getId (), value.getId (), algo.q);
+				algo.getPheromones ().increasePheromone (oldValue.getId (), value.getId (), Int32.MaxValue);
+				for (int i = 0; i < 25; i++)
+					algo.iteration();
 			}
 		}
 	}
