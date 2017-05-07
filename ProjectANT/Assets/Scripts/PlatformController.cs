@@ -27,7 +27,7 @@ public class PlatformController : MonoBehaviour
 	{
 		if (city != null) // dummy layers just have the city set to null, just ignore them!
 		{
-			Debug.Log (String.Format("Selected city: {0}", city.getId ()));
+			Debug.Log (String.Format("Selected city: {0}, Min Distance: {1}", city.getId (), generator.Result));
 			generator.SelectedCity = city;
 		}
 	}
