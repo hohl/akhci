@@ -46,6 +46,11 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 		Load ();
 	}
 
+	public override void Finish ()
+	{
+		Recalc (cities.Count * 3);
+	}
+
 	public override Platform Next ()
 	{
 		if (SelectedCity == PreviousCity) 
@@ -60,15 +65,15 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 		}
 		else 
 		{
-			PreviousCity = SelectedCity;
-			needsBuffer = true;
-			return FindBestForCity (SelectedCity);
+			return NextCity ();
 		}
 	}
 
-	public override void Finish ()
+	protected virtual Platform NextCity ()
 	{
-		Recalc (cities.Count * 3);
+		PreviousCity = SelectedCity;
+		needsBuffer = true;
+		return FindBestForCity (SelectedCity);
 	}
 
 	private void Load ()
