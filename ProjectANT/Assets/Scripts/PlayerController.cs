@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 	private Text endTextPlatforms;
 	private Text endTextDistance;
 	private Text endTextTsp;
-
+	private GameObject endPlatform;
 	// Use this for initialization
 	void Start () 
 	{
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 		cameraCont = playerCamera.GetComponent<CameraController>();
 		pauseCont = GetComponent<PauseController>();
 		platformCont = platformControllerObject.GetComponent<PlatformController>();
+		endPlatform = FindObjectOfType<EndPlatformController>().gameObject;
 
 		InitiateMenu();
 	}
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				myRigidbody.gameObject.SetActive(false);
+				endPlatform.SetActive(false);
 				ShowEndMenu();
 			}
 		}
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public int getPlatformScore()
+	public int GetPlatformScore()
 	{
 		return platformScore;
 	}
@@ -134,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
 	private void ShowEndMenu()
 	{
-		endTextPlatforms.text = getPlatformScore() + "";
+		endTextPlatforms.text = GetPlatformScore() + "";
 		endTextDistance.text = platformCont.Result + "";
 		endTextTsp.text = "Example";
 		menuEnd.SetActive(true);

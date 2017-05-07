@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\PheromonsBasedPlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\PlatformController.cs" />
+     <Compile Include="Assets\Scripts\PlatformDestroyerController.cs" />
      <Compile Include="Assets\Scripts\PlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\RandomPheromonsPlatformGenerator.cs" />
