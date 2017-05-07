@@ -39,8 +39,8 @@ public class PlatformController : MonoBehaviour
 
 	void Start ()
 	{
-		generator = new SimplePlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
-		//generator = new RandomPlatformGenerator ();
+		generator = new BestPheromonsPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
+		//generator = new RandomPhermononsPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
 		CalculateCorridorValues();
 		platformHeight = startPlatform.GetComponent<BoxCollider2D>().size.y;
 	}
