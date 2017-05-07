@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class EndPlatformController : MonoBehaviour {
 
-	public GameObject endCollider;
+	private GameObject endCollider;
 
 	public float platformSpeed;
-
-	private bool moveDown = true;
-	private GameObject mainCamera;
 	private GameObject movingPoint;
 
 
 	// Use this for initialization
 	void Start () {
-		endCollider = GameObject.Find("EndPlatform");	
-		mainCamera = GameObject.Find ("Main Camera");
+		endCollider = GameObject.Find("EndPlatform");
 		movingPoint = GameObject.Find ("MaxEndPlatformDistance");
-		moveDown = true;
 	}
 	
 	// Update is called once per frame
@@ -37,22 +32,8 @@ public class EndPlatformController : MonoBehaviour {
 		}
 	}
 
-	private void MoveGameObjectDown(GameObject go) {
-
-
-
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		Debug.Log("collided with " + other.gameObject.name);
 	}
-
-//	void OnTriggerEnter2D(Collider2D other) {
-//
-//		if (other.gameObject.name == "MaxEndPlatformDistance") {
-//			moveDown = false;
-//		}
-//		
-//	}
-//	void OnTriggerExit2D(Collider2D other) {
-//		if (other.gameObject.name == "MaxEndPlatformDistance") {
-//			moveDown = true;
-//		}
-//	}
 }

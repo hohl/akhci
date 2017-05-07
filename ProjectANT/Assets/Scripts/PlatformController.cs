@@ -94,7 +94,7 @@ public class PlatformController : MonoBehaviour
 	{
 		Vector3 position = new Vector3 (corridorStart + (x - width / 2) * corridorWidth + width * corridorWidth / 2, transform.position.y, startPlatform.transform.position.z);
 		GameObject trigger = Instantiate (startTrigger, position, transform.rotation);
-		trigger.name = String.Format ("Triger(pos: {0}, city: {2})", x, width, city == null ? -1 : city.getId());
+		trigger.name = String.Format ("Trigger(pos: {0}, city: {2})", x, width, city == null ? -1 : city.getId());
 		trigger.transform.localScale = new Vector3 (width * corridorWidth, startPlatform.transform.localScale.y, startPlatform.transform.localScale.z);
 		trigger.AddComponent<GapController> ().City = city;
 	}
