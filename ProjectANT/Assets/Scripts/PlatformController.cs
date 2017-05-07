@@ -95,10 +95,10 @@ public class PlatformController : MonoBehaviour
 
 	private void CreateTrigger (float x, float width, City city, GameObject platform)
 	{
-		Vector3 position = new Vector3 (corridorStart + (x - width / 2) * corridorWidth + width * corridorWidth / 2, transform.position.y, startPlatform.transform.position.z);
+		Vector3 position = new Vector3 (corridorStart + (x - width / 2) * corridorWidth + width * corridorWidth / 2, transform.position.y - platform.transform.lossyScale.y/2f, startPlatform.transform.position.z);
 		GameObject trigger = Instantiate (startTrigger, position, transform.rotation);
 		trigger.name = String.Format ("Trigger(pos: {0}, city: {2})", x, width, city == null ? -1 : city.getId());
-		trigger.transform.localScale = new Vector3 (width * corridorWidth, startPlatform.transform.localScale.y, startPlatform.transform.localScale.z);
+		trigger.transform.localScale = new Vector3 (width * corridorWidth, startPlatform.transform.localScale.y/4f, startPlatform.transform.localScale.z);
 		trigger.AddComponent<GapController> ().City = city;
 
 		// this is used to make it easier to remove the triggers
