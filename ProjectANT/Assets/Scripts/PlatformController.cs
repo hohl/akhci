@@ -32,6 +32,11 @@ public class PlatformController : MonoBehaviour
 		}
 	}
 
+	public void Finish ()
+	{
+		generator.Finish ();
+	}
+
 	void Start ()
 	{
 		generator = new SimplePlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
