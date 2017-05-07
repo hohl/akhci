@@ -66,6 +66,12 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 		}
 	}
 
+	public override void Finish ()
+	{
+		for (int i = 0; i < 3 * cities.Count; i++)
+			algo.iteration();
+	}
+
 	private void Load ()
 	{
 		cities.Add(new City(2, 4, 0, "Vienna", cityGameObject));
