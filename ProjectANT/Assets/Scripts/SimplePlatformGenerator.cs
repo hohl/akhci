@@ -25,10 +25,10 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 			return base.SelectedCity;
 		}
 		set {
-			City oldValue = base.SelectedCity;
 			base.SelectedCity = value;
-			if (oldValue != null) {
-				algo.getPheromones ().increasePheromone (oldValue.getId (), value.getId (), PlayerFactor);
+			if (PreviousCity != null) {
+				Debug.Log (String.Format ("AntAlgo: Increase pheromones of path {0} to {1}.", PreviousCity.getId (), value.getId ()));
+				algo.getPheromones ().increasePheromone (PreviousCity.getId (), value.getId (), PlayerFactor);
 				RecalcIfNeeded ();
 			}
 		}
