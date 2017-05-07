@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D myRigidbody;
 	private Button restartButton;
 	private PlatformController platformCont;
+	private int platformScore = 0;
+	private Text endTextPlatforms;
+	private Text endTextDistance;
+	private Text endTextTsp;
 
 	// Use this for initialization
 	void Start () 
@@ -26,9 +30,9 @@ public class PlayerController : MonoBehaviour
 		// should we create a gamecontroller for that
 		cameraCont = playerCamera.GetComponent<CameraController>();
 		pauseCont = GetComponent<PauseController>();
-		restartButton = menuEnd.GetComponentInChildren<Button>(true);
-		restartButton.onClick.AddListener(RestartGame);
-		platformCont = platformControllerObject.GetComponent<PlatformController> ();
+		platformCont = platformControllerObject.GetComponent<PlatformController>();
+
+		InitiateMenu();
 	}
 	
 	// Update is called once per frame
@@ -43,17 +47,9 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				myRigidbody.gameObject.SetActive(false);
-				menuEnd.SetActive(true);
+				ShowEndMenu();
 			}
 		}
-	}
-
-	private void RestartGame()
-	{
-		//myRigidbody.gameObject.SetActive(false);
-		menuEnd.SetActive(false);
-		int scene = SceneManager.GetActiveScene().buildIndex;
-		SceneManager.LoadScene(scene, LoadSceneMode.Single);
 	}
 
 	private void MoveCharacter()
@@ -80,9 +76,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-
 		Vector2 movement = new Vector2(direction, 0);
-
 		myRigidbody.AddForce(movement * movementSpeed);
 	}
 
@@ -102,7 +96,55 @@ public class PlayerController : MonoBehaviour
 			if (gapController != null) 
 			{
 				platformCont.Select (gapController.City);
+				platformScore++;
 			}
 		}
+	}
+
+	public int getPlatformScore()
+	{
+		return platformScore;
+	}
+
+	private void InitiateMenu()
+	{
+		restartButton = menuEnd.GetComponentInChildren<Button>(true);
+		restartButton.onClick.AddListener(RestartGame);
+		Text[] textViews = menuEnd.GetComponentsInChildren<Text>(true);
+		foreach (Text view in textViews)
+		{
+			String name = view.name;
+			if (name != null)
+			{
+				if (name.Equals("PlatformsPlayer"))
+				{
+					endTextPlatforms = view;
+				}
+				else if (name.Equals("DistancePlayer"))
+				{
+					endTextDistance = view;
+				}
+				else if (name.Equals("TspPlayer"))
+				{
+					endTextTsp = view;
+				}
+			}
+		}
+	}
+
+	private void ShowEndMenu()
+	{
+		endTextPlatforms.text = getPlatformScore() + "";
+		endTextDistance.text = platformCont.Result + "";
+		endTextTsp.text = "Example";
+		menuEnd.SetActive(true);
+	}
+
+	private void RestartGame()
+	{
+		//myRigidbody.gameObject.SetActive(false);
+		menuEnd.SetActive(false);
+		int scene = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene(scene, LoadSceneMode.Single);
 	}
 }
