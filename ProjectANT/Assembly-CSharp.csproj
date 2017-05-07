@@ -55,7 +55,7 @@
      <Compile Include="Assets\Scripts\AntAlgorithm\Distances.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithm\Pheromones.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithm\TSPImporter.cs" />
-     <Compile Include="Assets\Scripts\BestPheromonsPlatformGenerator.cs" />
+     <Compile Include="Assets\Scripts\BestPheromonesPlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ControllingCameraAspectScript.cs" />
      <Compile Include="Assets\Scripts\EndPlatformController.cs" />
@@ -63,14 +63,16 @@
      <Compile Include="Assets\Scripts\GapController.cs" />
      <Compile Include="Assets\Scripts\InvisibleTouchable.cs" />
      <Compile Include="Assets\Scripts\PauseController.cs" />
-     <Compile Include="Assets\Scripts\PheromonsBasedPlatformGenerator.cs" />
+     <Compile Include="Assets\Scripts\PheromonesBasedPlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\PlatformController.cs" />
      <Compile Include="Assets\Scripts\PlatformDestroyerController.cs" />
      <Compile Include="Assets\Scripts\PlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\RandomPheromonsPlatformGenerator.cs" />
+     <Compile Include="Assets\Scripts\RandomPheromonesPlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\RandomPlatformGenerator.cs" />
+     <Compile Include="Assets\Scripts\TspUtils\TspInfo.cs" />
+     <Compile Include="Assets\Scripts\TspUtils\TspLoader.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
