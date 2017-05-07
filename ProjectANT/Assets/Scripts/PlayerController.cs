@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public int getPlatformScore()
+	public int GetPlatformScore()
 	{
 		return platformScore;
 	}
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
 	private void ShowEndMenu()
 	{
-		endTextPlatforms.text = getPlatformScore() + "";
+		endTextPlatforms.text = GetPlatformScore() + "";
 		endTextDistance.text = platformCont.Result + "";
 		endTextTsp.text = "Example";
 		menuEnd.SetActive(true);
