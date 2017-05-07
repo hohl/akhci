@@ -87,7 +87,7 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 
 		algo.setCities(cities);
 		algo.init();
-		Recalc (cities.Count / 3);
+		Recalc (cities.Count);
 	}
 
 	private void RecalcIfNeeded()
