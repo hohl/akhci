@@ -68,8 +68,7 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 
 	public override void Finish ()
 	{
-		for (int i = 0; i < 3 * cities.Count; i++)
-			algo.iteration();
+		Recalc (cities.Count * 3);
 	}
 
 	private void Load ()
@@ -88,17 +87,25 @@ public class SimplePlatformGenerator : RandomPlatformGenerator
 
 		algo.setCities(cities);
 		algo.init();
-		for (int i = 0; i < cities.Count; i++)
-			algo.iteration();
+		Recalc (cities.Count / 3);
 	}
 
 	private void RecalcIfNeeded()
 	{
 		if (needsRecalcCounter == 0) {
-			for (int i = 0; i < cities.Count; i++)
-				algo.iteration();
+			Recalc (cities.Count / 3);
 			needsRecalcCounter = RecalcInterval;
+		} else {
+			needsRecalcCounter--;
 		}
+	}
+
+	private void Recalc(int iterations)
+	{
+
+		Debug.Log (String.Format ("AntAlgo: Run {0} iterations...", iterations));
+		for (int i = 0; i < iterations; i++)
+			algo.iteration ();
 	}
 
 	public Platform FindBestForCity (City startCity)
