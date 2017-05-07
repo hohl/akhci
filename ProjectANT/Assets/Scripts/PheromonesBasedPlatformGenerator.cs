@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using AntAlgorithms;
 using UnityEngine;
 
-public abstract class PheromonsBasedPlatformGenerator : RandomPlatformGenerator
+public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 {
 	private const int PlayerFactor = Int32.MaxValue;
 	private const int RecalcInterval = 3;
 
 	protected AntAlgorithmSimple algo;
 	protected List<City> cities = new List<City> ();
-	private GameObject cityGameObject;
 	private bool needsBuffer = true;
 	private int needsRecalcCounter = RecalcInterval;
 
@@ -39,10 +38,9 @@ public abstract class PheromonsBasedPlatformGenerator : RandomPlatformGenerator
 		private set;
 	}
 
-	public PheromonsBasedPlatformGenerator (AntAlgorithmSimple algo)
+	public PheromonesBasedPlatformGenerator (AntAlgorithmSimple algo)
 	{
 		this.algo = algo;
-		cityGameObject = new GameObject ();
 		Load ();
 	}
 
@@ -75,18 +73,13 @@ public abstract class PheromonsBasedPlatformGenerator : RandomPlatformGenerator
 
 	private void Load ()
 	{
-		cities.Add(new City(2, 4, 0, "Vienna", cityGameObject));
-		cities.Add(new City(1, 9, 1, "Graz", cityGameObject));
-		cities.Add(new City(3, 8, 2, "Klagenfurt", cityGameObject));
-		cities.Add(new City(9, 1, 3, "Innsbruck", cityGameObject));
-		cities.Add(new City(10, 1, 4, "Innsbruck", cityGameObject));
+		//TspInfo[] allTSPs = TspLoader.Instance.GetAllTSPs();
+		CurrentTsp = TspLoader.Instance.SelectRandomTsp(); //allTSPs[2];
+		cities = CurrentTsp.Load();
 
-		cities.Add(new City(5, 4, 5, "Vienna", cityGameObject));
-		cities.Add(new City(1, 11, 6, "Graz", cityGameObject));
-		cities.Add(new City(3, 4, 7, "Klagenfurt", cityGameObject));
+		Debug.Log("Loaded TSP '" + CurrentTsp.GetName() + "' with " + cities.Count + " cities.");
 
 		SelectedCity = cities [0];
-
 		algo.setCities(cities);
 		algo.init();
 		Recalc (cities.Count);

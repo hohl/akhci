@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 	private Text endTextDistance;
 	private Text endTextTsp;
 	private GameObject endPlatform;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -138,7 +139,7 @@ public class PlayerController : MonoBehaviour
 	{
 		endTextPlatforms.text = GetPlatformScore() + "";
 		endTextDistance.text = platformCont.Result + "";
-		endTextTsp.text = "Example";
+		endTextTsp.text = platformCont.GetCurrentTspName();
 		menuEnd.SetActive(true);
 	}
 

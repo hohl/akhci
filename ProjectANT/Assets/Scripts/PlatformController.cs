@@ -41,7 +41,7 @@ public class PlatformController : MonoBehaviour
 	{
 		startPlatform = Resources.Load("Platform") as GameObject;
 		startTrigger = Resources.Load("PlatformTrigger") as GameObject;
-		generator = new BestPheromonsPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
+		generator = new BestPheromonesPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
 		//generator = new RandomPhermononsPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
 		CalculateCorridorValues();
 		platformHeight = startPlatform.GetComponent<BoxCollider2D>().size.y;
@@ -105,4 +105,10 @@ public class PlatformController : MonoBehaviour
 		// when destroying a platform, the triggers will also be destroyed
 		trigger.transform.parent = platform.transform;
 	}
+
+	internal string GetCurrentTspName()
+	{
+		return generator.CurrentTsp.GetName();
+	}
+
 }

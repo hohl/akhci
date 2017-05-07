@@ -14,7 +14,7 @@ using System;
 public static class TSPImporter
 {
 
-    private static string tspLibFolderName = "tspLib";
+    private static string tspLibFolderName = "TspLib";
     private static string pointSection = "NODE_COORD_SECTION";
 
     public static List<City> importTsp(string fileName)

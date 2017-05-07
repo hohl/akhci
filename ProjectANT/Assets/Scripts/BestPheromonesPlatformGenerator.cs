@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class BestPheromonsPlatformGenerator : PheromonsBasedPlatformGenerator
+public class BestPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 {
-	public BestPheromonsPlatformGenerator(AntAlgorithms.AntAlgorithmSimple algo) : base(algo)
+	public BestPheromonesPlatformGenerator(AntAlgorithms.AntAlgorithmSimple algo) : base(algo)
 	{
 	}
 
