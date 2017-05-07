@@ -31,9 +31,4 @@ public class EndPlatformController : MonoBehaviour {
 				movingPoint.transform.position.y - movingPoint.transform.localScale.y);
 		}
 	}
-
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		Debug.Log("collided with " + other.gameObject.name);
-	}
 }

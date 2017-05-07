@@ -8,7 +8,7 @@ public class PlatformController : MonoBehaviour
 	public Transform generationPoint;
 	public float distanceBetweenPlatforms;
 
-	public GameObject startPlatform;
+	private GameObject startPlatform;
 	public GameObject startTrigger;
 
 	private float corridorStart;
@@ -39,6 +39,7 @@ public class PlatformController : MonoBehaviour
 
 	void Start ()
 	{
+		startPlatform = Resources.Load("Platform") as GameObject;
 		generator = new SimplePlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
 		//generator = new RandomPlatformGenerator ();
 		CalculateCorridorValues();
