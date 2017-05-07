@@ -9,11 +9,18 @@ public class EndPlatformController : MonoBehaviour {
 	public float platformSpeed;
 	private GameObject movingPoint;
 
+	private PlayerController playerController;
+
+	private int scoreAtLastSpeedup;
 
 	// Use this for initialization
 	void Start () {
 		endCollider = GameObject.Find("EndPlatform");
 		movingPoint = GameObject.Find ("MaxEndPlatformDistance");
+
+		playerController = GameObject.Find ("Player").GetComponent<PlayerController> ();
+
+		scoreAtLastSpeedup = 0;
 	}
 	
 	// Update is called once per frame
@@ -25,10 +32,17 @@ public class EndPlatformController : MonoBehaviour {
 				endCollider.transform.position.y - platformSpeed * Time.deltaTime,
 				endCollider.transform.position.z);
 		} else {
-
 			endCollider.transform.position = new Vector2 (
 				endCollider.transform.position.x, 
 				movingPoint.transform.position.y - movingPoint.transform.localScale.y);
 		}
+
+		int score = playerController.GetPlatformScore ();
+		if (score > scoreAtLastSpeedup && score % 20 == 0) {
+			platformSpeed *= 1.2f;
+			scoreAtLastSpeedup = score;
+			Debug.Log ("SPEEED " + platformSpeed);
+		}
+			
 	}
 }
