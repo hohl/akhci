@@ -25,6 +25,7 @@ sysinfo.txt
 # OS generated #
 # ============ #
 .DS_Store*
+Assembly-CSharp.csproj
 ._*
 .Spotlight-V100
 .Trashes
