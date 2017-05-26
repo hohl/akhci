@@ -38,7 +38,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 		private set;
 	}
 
-	public PheromonesBasedPlatformGenerator (AntAlgorithm algo)
+	public PheromonesBasedPlatformGenerator (AntAlgorithm algo, int id) : base(id)
 	{
 		this.algo = algo;
 		Load ();

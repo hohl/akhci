@@ -40,12 +40,13 @@ public class PlatformController : MonoBehaviour
 
 	void Start ()
 	{
-		var algo = new ASAlgorithm (1, 2, 100, 6);
+		startPlatform = Resources.Load ("Platform") as GameObject;
+		startTrigger = Resources.Load ("PlatformTrigger") as GameObject;
 
-		startPlatform = Resources.Load("Platform") as GameObject;
-		startTrigger = Resources.Load("PlatformTrigger") as GameObject;
-		generator = new BestPheromonesPlatformGenerator (algo);
-		//generator = new RandomPhermononsPlatformGenerator (algo);
+		var loader = new PlatformGeneratorLoader ();
+		generator = loader.LoadAny ();
+		Debug.Log (String.Format ("Use PlatformGenerator #{0}", generator.ID));
+
 		CalculateCorridorValues();
 		platformHeight = startPlatform.GetComponent<BoxCollider2D>().size.y;
 	}

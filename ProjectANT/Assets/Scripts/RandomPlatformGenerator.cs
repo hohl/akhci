@@ -2,7 +2,11 @@
 
 public class RandomPlatformGenerator : PlatformGenerator
 {
-	protected System.Random rand = new System.Random ();
+	protected Random rand = new Random ();
+
+	public RandomPlatformGenerator (int id) : base (id)
+	{
+	}
 
 	public override Platform Next ()
 	{

@@ -3,7 +3,7 @@ using System;
 
 public class RandomPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 {
-	public RandomPheromonesPlatformGenerator(AntAlgorithm algo) : base(algo)
+	public RandomPheromonesPlatformGenerator(AntAlgorithm algo) : base(algo, 100)
 	{
 	}
 
