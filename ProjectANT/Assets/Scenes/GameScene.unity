@@ -1428,7 +1428,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730877387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 28194929}
@@ -2545,7 +2545,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1566893654}
   - component: {fileID: 1566893655}
-  - component: {fileID: 1566893656}
   m_Layer: 0
   m_Name: PlatformController
   m_TagString: Untagged
@@ -2579,24 +2578,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generationPoint: {fileID: 2008225800}
   distanceBetweenPlatforms: 1
---- !u!114 &1566893656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1566893653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbfb77896e65a41cb93a766f4e8ed6ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alpha: 1
-  beta: 2
-  rho: 0.07
-  q: 100
-  numOfAnts: 6
-  firstCity: 0
-  mode: 0
 --- !u!4 &1688738480 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4802495840840802, guid: 11f91022994beb04685e466ac9c0c2aa,
