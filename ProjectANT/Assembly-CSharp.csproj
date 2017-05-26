@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\AntAlgorithms\Distances.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithms\Pheromones.cs" />
      <Compile Include="Assets\Scripts\AntAlgorithms\TSPImporter.cs" />
+     <Compile Include="Assets\Scripts\BestDistancesPlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\BestPheromonesPlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ControllingCameraAspectScript.cs" />
