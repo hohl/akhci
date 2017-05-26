@@ -32,11 +32,12 @@ public class BestPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 		}
 
 		// normalize values! [0..1]
+		firstPheromons = PseudoSafeFloat(firstPheromons);
+		secondPheromons = PseudoSafeFloat (secondPheromons);
 		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
 
 		return new Platform (new Gap (firstPheromons, firstCity), new Gap (secondPheromons, secondCity));
 	}
-
 }
 	
