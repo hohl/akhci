@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AntAlgorithms;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,10 +40,12 @@ public class PlatformController : MonoBehaviour
 
 	void Start ()
 	{
+		var algo = new ASAlgorithm (1, 2, 100, 6);
+
 		startPlatform = Resources.Load("Platform") as GameObject;
 		startTrigger = Resources.Load("PlatformTrigger") as GameObject;
-		generator = new BestPheromonesPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
-		//generator = new RandomPhermononsPlatformGenerator (GetComponent<AntAlgorithms.AntAlgorithmSimple>());
+		generator = new BestPheromonesPlatformGenerator (algo);
+		//generator = new RandomPhermononsPlatformGenerator (algo);
 		CalculateCorridorValues();
 		platformHeight = startPlatform.GetComponent<BoxCollider2D>().size.y;
 	}

@@ -8,7 +8,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 	private const int PlayerFactor = Int32.MaxValue;
 	private const int RecalcInterval = 3;
 
-	protected AntAlgorithmSimple algo;
+	protected AntAlgorithm algo;
 	protected List<City> cities = new List<City> ();
 	private bool needsBuffer = true;
 	private int needsRecalcCounter = RecalcInterval;
@@ -27,7 +27,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 			base.SelectedCity = value;
 			if (PreviousCity != null) {
 				Debug.Log (String.Format ("AntAlgo: Increase pheromones of path {0} to {1}.", PreviousCity.getId (), value.getId ()));
-				algo.getPheromones ().increasePheromone (PreviousCity.getId (), value.getId (), PlayerFactor);
+				algo.getPheromones ().increasePheromoneAS (PreviousCity.getId (), value.getId (), PlayerFactor);
 				RecalcIfNeeded ();
 			}
 		}
@@ -38,7 +38,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 		private set;
 	}
 
-	public PheromonesBasedPlatformGenerator (AntAlgorithmSimple algo)
+	public PheromonesBasedPlatformGenerator (AntAlgorithm algo)
 	{
 		this.algo = algo;
 		Load ();

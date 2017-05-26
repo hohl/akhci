@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AntAlgorithms;
+using System;
 
 public class RandomPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 {
-	public RandomPheromonesPlatformGenerator(AntAlgorithms.AntAlgorithmSimple algo) : base(algo)
+	public RandomPheromonesPlatformGenerator(AntAlgorithm algo) : base(algo)
 	{
 	}
 
