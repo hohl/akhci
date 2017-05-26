@@ -9,6 +9,7 @@ public class PlatformGeneratorLoader
 	private PlatformGenerator[] generators = new PlatformGenerator[] {
 		new BestPheromonesPlatformGenerator (CreateAntAlgorithm ()),
 		new RandomPheromonesPlatformGenerator (CreateAntAlgorithm ()),
+		new BestDistancesPlatformGenerator (CreateAntAlgorithm ())
 	};
 
 	private Random rand = new Random();
