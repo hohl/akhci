@@ -7,7 +7,7 @@ using UnityEngine;
 public class TspLoader
 {
 	private static TspLoader instance;
-	private TspInfo[] allTSPs = new TspInfo[] { new TspTest8(), new TspTest50(), new Berlin52(), new Eil51()
+	private TspInfo[] allTSPs = new TspInfo[] { new TspTest8(), new TspTest50()//, new Berlin52(), new Eil51()
 		// These will load but take a bit long:
 		//		new Eil101(),
 		// These all won't load???
