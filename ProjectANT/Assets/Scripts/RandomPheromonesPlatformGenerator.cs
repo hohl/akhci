@@ -22,6 +22,8 @@ public class RandomPheromonesPlatformGenerator : PheromonesBasedPlatformGenerato
 		float secondPheromons = (float) algo.getPheromones().getPheromone(startCityIndex, secondCityIndex);
 
 		// normalize values! [0..1]
+		firstPheromons = PseudoSafeFloat(firstPheromons);
+		secondPheromons = PseudoSafeFloat (secondPheromons);
 		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
 

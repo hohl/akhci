@@ -71,6 +71,20 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 
 	protected abstract Platform FindNextCities (City startCity);
 
+	protected float PseudoSafeFloat(float value)
+	{
+		// no, that method doesn't have any mathematical background,
+		// just an ungly hack which works for very unlikly cases
+
+		if (float.IsPositiveInfinity (value))
+			return float.MaxValue / 2.0f;
+
+		if (float.IsNegativeInfinity (value))
+			return float.MinValue / 2.0f;
+
+		return value;
+	}
+
 	private void Load ()
 	{
 		//TspInfo[] allTSPs = TspLoader.Instance.GetAllTSPs();
