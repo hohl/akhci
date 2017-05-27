@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AntAlgorithms;
+using System;
 
 public class RandomPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 {
-	public RandomPheromonesPlatformGenerator(AntAlgorithms.AntAlgorithmSimple algo) : base(algo)
+	public RandomPheromonesPlatformGenerator(AntAlgorithm algo) : base(algo, 100)
 	{
 	}
 
@@ -21,6 +22,8 @@ public class RandomPheromonesPlatformGenerator : PheromonesBasedPlatformGenerato
 		float secondPheromons = (float) algo.getPheromones().getPheromone(startCityIndex, secondCityIndex);
 
 		// normalize values! [0..1]
+		firstPheromons = PseudoSafeFloat(firstPheromons);
+		secondPheromons = PseudoSafeFloat (secondPheromons);
 		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
 		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
 

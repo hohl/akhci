@@ -7,6 +7,11 @@ public abstract class PlatformGenerator
 {
 	public virtual TspInfo CurrentTsp {	get; set; }
 
+	public virtual int ID {
+		get;
+		private set;
+	}
+
 	public virtual double Result { 
 		get {
 			return 0;
@@ -19,5 +24,10 @@ public abstract class PlatformGenerator
 
 	public virtual void Finish () 
 	{
+	}
+
+	public PlatformGenerator(int id)
+	{
+		this.ID = id;
 	}
 }
