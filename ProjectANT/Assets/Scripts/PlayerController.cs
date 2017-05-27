@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	private PauseController pauseCont;
 	private Rigidbody2D myRigidbody;
 	private Button restartButton;
+	private Button menuButton;
 	private PlatformController platformCont;
 	private int platformScore = 0;
 	private Text endTextPlatforms;
@@ -111,8 +112,23 @@ public class PlayerController : MonoBehaviour
 
 	private void InitiateMenu()
 	{
-		restartButton = menuEnd.GetComponentInChildren<Button>(true);
-		restartButton.onClick.AddListener(RestartGame);
+		Button[] buttons = menuEnd.GetComponentsInChildren<Button> (true);
+
+		foreach(Button button in buttons) {
+			String name = button.name;
+			if (name != null) {
+				if (name.Equals ("RestartButton")) {
+					restartButton = button;
+					restartButton.onClick.AddListener(RestartGame);
+				} else if (name.Equals ("EndMenuButton")) {
+					menuButton = button;
+					menuButton.onClick.AddListener (GoBackToMenu);
+				}
+			}
+		}
+			
+
+
 		Text[] textViews = menuEnd.GetComponentsInChildren<Text>(true);
 		foreach (Text view in textViews)
 		{
@@ -150,4 +166,9 @@ public class PlayerController : MonoBehaviour
 		int scene = SceneManager.GetActiveScene().buildIndex;
 		SceneManager.LoadScene(scene, LoadSceneMode.Single);
 	}
+
+	private void GoBackToMenu() {
+		SceneManager.LoadScene("MainMenuScene");
+	}
+
 }

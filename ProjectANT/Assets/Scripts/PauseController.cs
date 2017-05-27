@@ -12,25 +12,33 @@ public class PauseController : MonoBehaviour
 
 	private Button buttonContinue;
 	private Button buttonRestart;
+	private Button buttonMenu;
 	private bool gameOver = false;
 
 	void Start()
 	{
 		Button[] menuButtons = menuPause.gameObject.GetComponentsInChildren<Button>(true);
 		foreach(Button button in menuButtons) {
-			String buttonName = button.gameObject.name.ToLower();
-			if (buttonName.Equals("continue"))
+			String buttonName = button.gameObject.name;
+			if (buttonName.Equals("ContinueButton"))
 			{
 				buttonContinue = button;
+				buttonContinue.onClick.AddListener(PauseGame);
 			}
-			else if(buttonName.Equals("restart"))
+			else if(buttonName.Equals("Restart"))
 			{
 				buttonRestart = button;
+				buttonRestart.onClick.AddListener(RestartCurrentScene);
+			}
+			else if(buttonName.Equals("PauseMenuButton"))
+			{
+				buttonMenu = button;
+				buttonMenu.onClick.AddListener(GoBackToMenu);
 			}
 		}
 
-		buttonContinue.onClick.AddListener(PauseGame);
-		buttonRestart.onClick.AddListener(RestartCurrentScene);
+
+
 		pauseButton.onClick.AddListener(PauseGame);
 	}
 
@@ -78,5 +86,9 @@ public class PauseController : MonoBehaviour
 	{
 		this.gameOver = gameOver;
 		pauseButton.gameObject.SetActive(false);
+	}
+
+	private void GoBackToMenu() {
+		SceneManager.LoadScene("MainMenuScene");
 	}
 }
