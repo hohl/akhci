@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonStart: {fileID: 168935638}
-  buttonScoreboard: {fileID: 807511489}
+  buttonLeaderboard: {fileID: 807511489}
 --- !u!4 &742417820
 Transform:
   m_ObjectHideFlags: 0
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 807511490}
   - component: {fileID: 807511489}
   m_Layer: 5
-  m_Name: ScoreboardButton
+  m_Name: LeaderboardButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

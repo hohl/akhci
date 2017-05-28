@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class MainMenuController: MonoBehaviour {
 
 	public Button buttonStart;
-	public Button buttonScoreboard;
+	public Button buttonLeaderboard;
 
 	// Use this for initialization
 	void Start () {
 		buttonStart.onClick.AddListener(StartGame);
-		buttonScoreboard.onClick.AddListener(ShowScoreboard);
+		buttonLeaderboard.onClick.AddListener(ShowLeaderboard);
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class MainMenuController: MonoBehaviour {
 		SceneManager.LoadScene("GameScene");
 	}
 
-	void ShowScoreboard() {
+	void ShowLeaderboard() {
 		
 	}
 }
