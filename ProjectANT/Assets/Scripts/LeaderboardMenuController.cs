@@ -11,6 +11,8 @@ public class LeaderboardMenuController : MonoBehaviour {
 	private List<GameObject> leaderboardCells = new List<GameObject>();
 	private GameObject leaderboardHeader;
 
+	private int pageIndex = 0;
+
 	void Start () {
 
 
@@ -30,11 +32,36 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 
 		// Dummy to demonstrate that this actually works :D
-		int index = 0;
-		foreach (GameObject cell in leaderboardCells) {
-			index++;
-			cell.GetComponent<LeaderboardItemController> ().textRank.text = index.ToString ();
-		}
+//		int index = 0;
+//		foreach (GameObject cell in leaderboardCells) {
+//			index++;
+//			cell.GetComponent<LeaderboardItemController> ().textRank.text = index.ToString ();
+//		}
+
+
+		GlobalstatsIO_Leaderboard globalLeaderboard = Leaderboard.Instance.GetScore ();
+
+		for (int i = 0; i < leaderboardCells.Count; i++) {
+			if (pageIndex * leaderboardCells.Count + i < globalLeaderboard.data.Length) {
+
+				GameObject cell = leaderboardCells [i];
+				LeaderboardItemController cellController = cell.GetComponent<LeaderboardItemController> ();
+				GlobalstatsIO_LeaderboardValue leaderboardValue = globalLeaderboard.data [pageIndex * leaderboardCells.Count + i];
+
+				cellController.textName.text = leaderboardValue.name;
+				cellController.textRank.text = leaderboardValue.rank;
+				cellController.textDistance.text = leaderboardValue.value;
+				// TODO: Change this to the real values!!!!
+				cellController.textGraph.text = "0";
+				cellController.textAlgo.text = "0";
+
+				cell.SetActive (true);
+			} else {
+				leaderboardCells [i].SetActive (false);
+			}
+		} 
+
+
 	}
 	
 	private void GoBackToMenu() {

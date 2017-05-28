@@ -157,6 +157,11 @@ public class PlayerController : MonoBehaviour
 		endTextDistance.text = platformCont.Result + "";
 		endTextTsp.text = platformCont.GetCurrentTspName();
 		menuEnd.SetActive(true);
+
+		// TODO: Submit scores again.
+		//       To do that, create a number to indicate Graph and Algo
+		//Leaderboard.Instance.SubmitResult ((float)platformCont.Result, 0, 0);
+
 	}
 
 	private void RestartGame()

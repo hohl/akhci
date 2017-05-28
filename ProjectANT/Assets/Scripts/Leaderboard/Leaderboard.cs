@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
 
 // this is a singleton representing the leaderboard
@@ -44,7 +43,9 @@ public sealed class Leaderboard
 	}
 
 	// No idea if that works
-	public void GetScore() {
-		gs.getStatistic ("I don't know the key");
+	public GlobalstatsIO_Leaderboard GetScore() {
+
+		return gs.getLeaderboard ("distance", 100);
+
 	}
 }
