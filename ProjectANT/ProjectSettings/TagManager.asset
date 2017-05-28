@@ -9,6 +9,8 @@ TagManager:
   - EndMenu
   - Bottom
   - Gap
+  - LeaderboardHeader
+  - LeaderboardCell
   layers:
   - Default
   - TransparentFX
