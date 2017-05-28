@@ -8,6 +8,8 @@ public sealed class Leaderboard
 {
 	private static readonly Leaderboard instance = new Leaderboard();
 
+	private GlobalstatsIO gs = new GlobalstatsIO();
+
 	private Leaderboard() {
 		GlobalstatsIO.api_id = "SVJqT6lOZb3qMRX2iwTQ0V6593wWzqirl1Se8e37";
 		GlobalstatsIO.api_secret = "7xcYveh18813e7diE9R4sjqucFCrIJRQh3OMi6Oq";
@@ -23,7 +25,7 @@ public sealed class Leaderboard
 	// see 
 	public void SubmitResult(float distance, int graph, int algorithm)
 	{
-		GlobalstatsIO gs = new GlobalstatsIO();
+		
 		string user_name = "Anonymous";
 
 		Dictionary<string, string> values = new Dictionary<string, string>();
@@ -39,5 +41,10 @@ public sealed class Leaderboard
 		{
 			// An Error occured
 		}
+	}
+
+	// No idea if that works
+	public void GetScore() {
+		gs.getStatistic ("I don't know the key");
 	}
 }

@@ -25,6 +25,6 @@ public class MainMenuController: MonoBehaviour {
 	}
 
 	void ShowLeaderboard() {
-		
+		SceneManager.LoadScene("LeaderboardScene");
 	}
 }
