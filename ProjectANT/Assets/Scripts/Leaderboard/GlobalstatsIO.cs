@@ -38,6 +38,15 @@ public class GlobalstatsIO_LeaderboardValue
 	public string user_icon = null;
 	public string rank = "0";
 	public string value = "0";
+	public GlobalstatsIO_Additional[] additionals = null;
+}
+
+[System.Serializable]
+public class GlobalstatsIO_Additional
+{
+	public string key = null;
+	public string value = "0";
+	public string rank = "0";
 }
 
 [System.Serializable]
@@ -304,7 +313,7 @@ public class GlobalstatsIO
 	}
 
 	// numberOfPlayer can be 100 at max.
-	public GlobalstatsIO_Leaderboard getLeaderboard(string gtd, int numberOfPlayers) {
+	public GlobalstatsIO_Leaderboard getLeaderboard(string gtd, int numberOfPlayers, string[] additionals = null) {
 
 
 		if (numberOfPlayers < 0) {
@@ -324,7 +333,13 @@ public class GlobalstatsIO
 
 		string url = "https://api.globalstats.io/v1/gtdleaderboard/" + gtd;
 
-		string json_payload = "{\"limit\":" + numberOfPlayers + "\n}";
+		string json_payload = "{\"limit\":" + numberOfPlayers;
+
+		if (additionals != null) {
+			string additionalsString = "[\"" + string.Join("\",\"", additionals) + "\"]";
+			json_payload += ",\n" + "\"additionals\":" + additionalsString;
+		}
+		json_payload += "\n}";
 
 		Dictionary<string, string> headers = new Dictionary<string, string>();
 		headers.Add("Authorization", "Bearer " + api_access_token.access_token);

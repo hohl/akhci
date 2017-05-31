@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 // this is a singleton representing the leaderboard
 //TODO
@@ -45,7 +46,7 @@ public sealed class Leaderboard
 	// No idea if that works
 	public GlobalstatsIO_Leaderboard GetScore() {
 
-		return gs.getLeaderboard ("distance", 100);
+		return gs.getLeaderboard ("distance", 100, new string[] { "graph","algo" });
 
 	}
 }
