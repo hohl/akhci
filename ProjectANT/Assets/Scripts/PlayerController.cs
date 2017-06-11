@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 	{
 		int direction = 0;
 
-		if (Input.acceleration.x > 0.1f || Input.GetKey("d"))
+		if (Input.acceleration.x > 0.1f || Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
 		{
 			if (myRigidbody.velocity.x < 0) 
 			{
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 				direction = 1;
 			}
 		}
-		else if (Input.acceleration.x < -0.1f || Input.GetKey("a"))
+		else if (Input.acceleration.x < -0.1f || Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
 		{
 			if (myRigidbody.velocity.x > 0) {
 				direction = -2;
