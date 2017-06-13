@@ -3593,6 +3593,7 @@ GameObject:
   - component: {fileID: 1209420167}
   - component: {fileID: 1209420169}
   - component: {fileID: 1209420170}
+  - component: {fileID: 1209420171}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3717,6 +3718,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPause: {fileID: 1973744248}
   pauseButton: {fileID: 1533986842}
+--- !u!114 &1209420171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1209420164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a54ea7d5bf5663428d479794c597e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addScoreURL: https://www.andrejmueller.com/highscoresIML/addscore.php?
+  highscoreURL: https://www.andrejmueller.com/highscoresIML/getscores.php?
 --- !u!1 &1223921960 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1655771080289942, guid: 3402da5e4a4ffa344a6931311b45ba05,

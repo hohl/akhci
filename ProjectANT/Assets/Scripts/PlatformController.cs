@@ -115,4 +115,13 @@ public class PlatformController : MonoBehaviour
 		return generator.CurrentTsp.GetName();
 	}
 
+	internal int GetCurrentTspId()
+	{
+		return generator.CurrentTsp.GetId();
+	}
+
+	internal int GetGeneratorAlgoId()
+	{
+		return generator.ID;
+	}
 }

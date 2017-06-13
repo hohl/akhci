@@ -44,6 +44,11 @@ public class TspLoader
 	// TSP generation here below
 	class TspTest8 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 8;
+		}
+
 		public override string GetName()
 		{
 			return "test8";
@@ -69,6 +74,11 @@ public class TspLoader
 	}
 	class TspTest50 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 50;
+		}
+
 		public override string GetName()
 		{
 			return "test50";
@@ -146,6 +156,10 @@ public class TspLoader
 
 	class Eil51 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 51;
+		}
 		public override string GetName()
 		{
 			return "Eil51";
@@ -159,6 +173,10 @@ public class TspLoader
 
 	class Berlin52 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 52;
+		}
 		public override string GetName()
 		{
 			return "Berlin52";
@@ -172,6 +190,10 @@ public class TspLoader
 
 	class Dantzig42 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 42;
+		}
 		public override string GetName()
 		{
 			return "Dantzig42";
@@ -185,6 +207,11 @@ public class TspLoader
 
 	class Dsj1000 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 1000;
+		}
+
 		public override string GetName()
 		{
 			return "DSJ1000";
@@ -198,6 +225,11 @@ public class TspLoader
 
 	class Eil101 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 101;
+		}
+
 		public override string GetName()
 		{
 			return "Eil101";
@@ -211,6 +243,11 @@ public class TspLoader
 
 	class Fnl4461 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 14461;
+		}
+
 		public override string GetName()
 		{
 			return "Fnl4461";
@@ -224,6 +261,11 @@ public class TspLoader
 
 	class Si1032 : TspInfo
 	{
+		public override int GetId()
+		{
+			return 1032;
+		}
+
 		public override string GetName()
 		{
 			return "Si1032.tsp";

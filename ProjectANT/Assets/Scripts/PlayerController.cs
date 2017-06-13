@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 	private Text endTextDistance;
 	private Text endTextTsp;
 	private GameObject endPlatform;
+	private HSController hsMuellerController;
 
 	// Use this for initialization
 	void Start () 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
 		pauseCont = GetComponent<PauseController>();
 		platformCont = platformControllerObject.GetComponent<PlatformController>();
 		endPlatform = FindObjectOfType<EndPlatformController>().gameObject;
+		hsMuellerController = GetComponent<HSController>();
 
 		InitiateMenu();
 	}
@@ -92,6 +94,9 @@ public class PlayerController : MonoBehaviour
 			Debug.Log ("Result: " + platformCont.Result);
 			cameraCont.SetGameOver(true);
 			pauseCont.SetGameOver(true);
+			//hsMuellerController.StartPostScoresCoroutine("Anonymous", (int)platformCont.Result, platformCont.GetCurrentTspName());
+			//hsMuellerController.StartGetScoresCoroutine(platformCont.GetCurrentTspName(), 10);
+			//Leaderboard.Instance.SubmitResultAsync(platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId());
 		}
 
 		if (other.CompareTag ("Gap"))

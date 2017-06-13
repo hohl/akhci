@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Threading;
 
 // this is a singleton representing the leaderboard
 //TODO
@@ -23,17 +24,14 @@ public sealed class Leaderboard
 		}
 	}
 	// see 
-	public void SubmitResult(float distance, int graph, int algorithm)
+	public void SubmitResult(string name, double distance, int graphId, int algorithmId)
 	{
-		
-		string user_name = "Anonymous";
-
 		Dictionary<string, string> values = new Dictionary<string, string>();
 		values.Add("distance", distance.ToString());
-		values.Add("graph", graph.ToString());
-		values.Add("algo", algorithm.ToString());
+		values.Add("graph", graphId.ToString());
+		values.Add("algo", algorithmId.ToString());
 
-		if (gs.share("", user_name, values))
+		if (gs.share("", name, values))
 		{
 			// Success
 		}
@@ -41,6 +39,13 @@ public sealed class Leaderboard
 		{
 			// An Error occured
 		}
+	}
+
+	//TODO doesn't work
+	public void SubmitResultAsync(double distance, int graphId, int algorithmId)
+	{
+		Thread m_Thread = new Thread(() => SubmitResult("Anonymous", distance, graphId, algorithmId));
+		m_Thread.Start();
 	}
 
 	// No idea if that works

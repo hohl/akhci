@@ -80,7 +80,50 @@ public class LeaderboardMenuController : MonoBehaviour {
 		} 
 	}
 
-	
+	private void FillLeaderboardMueller()
+	{
+
+		if (globalLeaderboard.data == null)
+		{
+			return;
+		}
+
+		for (int i = 0; i < leaderboardCells.Count; i++)
+		{
+			if (pageIndex * leaderboardCells.Count + i < globalLeaderboard.data.Length)
+			{
+
+				GameObject cell = leaderboardCells[i];
+				LeaderboardItemController cellController = cell.GetComponent<LeaderboardItemController>();
+				GlobalstatsIO_LeaderboardValue leaderboardValue = globalLeaderboard.data[pageIndex * leaderboardCells.Count + i];
+
+				cellController.textName.text = leaderboardValue.name;
+				cellController.textRank.text = leaderboardValue.rank;
+				cellController.textDistance.text = leaderboardValue.value;
+
+				foreach (GlobalstatsIO_Additional additional in leaderboardValue.additionals)
+				{
+
+					if (additional.key == "graph")
+					{
+						cellController.textGraph.text = additional.value;
+					}
+					else if (additional.key == "algo")
+					{
+						cellController.textAlgo.text = additional.value;
+					}
+				}
+
+				cell.SetActive(true);
+			}
+			else
+			{
+				leaderboardCells[i].SetActive(false);
+			}
+		}
+	}
+
+
 	private void GoBackToMenu() {
 		SceneManager.LoadScene("MainMenuScene");
 	}
