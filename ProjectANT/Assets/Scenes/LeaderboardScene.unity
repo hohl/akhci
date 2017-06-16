@@ -2089,6 +2089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084164830}
   - component: {fileID: 1084164829}
+  - component: {fileID: 1084164831}
   m_Layer: 0
   m_Name: LeaderboardMenuController
   m_TagString: Untagged
@@ -2110,6 +2111,7 @@ MonoBehaviour:
   buttonBack: {fileID: 198346484}
   buttonNextPage: {fileID: 1891590481}
   buttonPreviousPage: {fileID: 1360110902}
+  hsMuellerController: {fileID: 0}
 --- !u!4 &1084164830
 Transform:
   m_ObjectHideFlags: 0
@@ -2123,6 +2125,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084164831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1084164828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a54ea7d5bf5663428d479794c597e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1154142757
 Prefab:
   m_ObjectHideFlags: 0

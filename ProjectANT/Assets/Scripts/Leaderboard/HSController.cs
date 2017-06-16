@@ -6,9 +6,10 @@ using System.Security.Cryptography;
 
 public class HSController : MonoBehaviour
 {
+	private static readonly String GAME_NAME = "ProjectANT";
 	private string secretKey = "rLdZyTAJeynUh6JDR8Sut8Yj1sLXIPWO";
-	public string addScoreURL = "https://www.andrejmueller.com/highscoresIML/addscore.php?";
-	public string highscoreURL = "https://www.andrejmueller.com/highscoresIML/getscores.php?";
+	public static string addScoreURL = "http://www.andrejmueller.com/highscoresIML/addscore.php?";
+	public static string highscoreURL = "http://www.andrejmueller.com/highscoresIML/getscores.php?";
 
 	public class CoroutineWithData
 	{
@@ -30,41 +31,103 @@ public class HSController : MonoBehaviour
 			}
 		}
 	}
+
 	void Start()
 	{
-		//StartCoroutine(GetScores("test1", 1));
-		//StartCoroutine(PostScores("Test", 1023, "test2"));
+		//StartCoroutine(GetScores("test2", "TravellingSnakesman", 10));
+		//StartCoroutine(PostScores("Test", 1023, "test2", 1, "TravellingSnakesman", "Time3:02"));
 	}
 
-	IEnumerator PostScores(string name, int score, string tsp)
+	IEnumerator PostScores(string name, int score, string tsp, int algorithm, string game, string comment)
 	{
-		string hash = Hash(secretKey);
-
-		string post_url = addScoreURL + "name=" + WWW.EscapeURL(name) + "&score=" + score + "&tsp=" + tsp + "&hash=" + hash;
+		string post_url = GetPostUrl(name, score, tsp, algorithm, game, comment);
 
 		WWW hs_post = new WWW(post_url);
+		print("HSPOST|" + hs_post.url);
 		yield return hs_post;
-		Debug.Log("HSPOST" + hs_post.url);
 
 		if (!string.IsNullOrEmpty(hs_post.error))
 		{
-			yield return "There was an error posting the high score: " + hs_post.error;
+			print("There was an error posting the high score: " + hs_post.error);
 		}
+
+		print("finished call:" + hs_post.url);
 	}
 
-	IEnumerator GetScores(string tspName, int numberOfEntries)
+	IEnumerator PostScores(string name, int score, string tsp, int algorithm, string game, string comment, Action<string> action)
 	{
-		WWW hs_get = new WWW(highscoreURL + "tsp=" + WWW.EscapeURL(tspName) + "&num=" + numberOfEntries);
-		yield return hs_get;
+		string post_url = GetPostUrl(name, score, tsp, algorithm, game, comment);
 
-		if (!string.IsNullOrEmpty(hs_get.error))
+		WWW hs_post = new WWW(post_url);
+		print("HSPOST|" + hs_post.url);
+		yield return hs_post;
+		string resultText;
+
+		if (!string.IsNullOrEmpty(hs_post.error))
 		{
-			yield return "There was an error getting the high score: " + hs_get.error;
+			resultText = "There was an error posting the high score: " + hs_post.error.ToString();
 		}
 		else
 		{
-			yield return hs_get.text;
+			resultText = "Posting high score succesful";
 		}
+
+		print(resultText);
+		action(resultText);
+	}
+
+	public IEnumerator GetScores(string tspName, string gameName, int numberOfEntries)
+	{
+		WWW hs_get = new WWW(GetScoresUrl(tspName, gameName, numberOfEntries));
+		print("HSGET|" + hs_get.url);
+		yield return hs_get;
+		string resultText;
+
+		if (!string.IsNullOrEmpty(hs_get.error))
+		{
+			resultText = "There was an error getting the high score: " + hs_get.error.ToString();
+		}
+		else
+		{
+			print("Getting high score succesful");
+			resultText = hs_get.text.ToString();
+		}
+
+		print(resultText);
+	}
+
+
+	private IEnumerator GetScores(string tspName, string gameName, int numberOfEntries, Action<string> action)
+	{
+		WWW hs_get = new WWW(GetScoresUrl(tspName, gameName, numberOfEntries));
+		print("HSGET|" + hs_get.url);
+		yield return hs_get;
+		string resultText;
+
+		if (!string.IsNullOrEmpty(hs_get.error))
+		{
+			resultText = "There was an error getting the high score: " + hs_get.error.ToString();
+		}
+		else
+		{
+			print("Getting high score succesful");
+			resultText = hs_get.text.ToString();
+		}
+
+		print(resultText);
+		action(resultText);
+	}
+
+	internal string GetScoresUrl(string tspName, string gameName, int numberOfEntries)
+	{
+		return new WWW(highscoreURL + "tsp=" + WWW.EscapeURL(tspName) + "&num=" + numberOfEntries + "&game=" + gameName).url;
+	}
+
+	internal string GetPostUrl(string name, int score, string tsp, int algorithm, string game, string comment)
+	{
+		string hash = Hash(secretKey);
+
+		return addScoreURL + "name=" + WWW.EscapeURL(name) + "&score=" + score + "&tsp=" + tsp + "&hash=" + hash + "&algorithm=" + algorithm + "&game=" + game + "&comment=" + comment;
 	}
 
 	public string Hash(string password)
@@ -72,21 +135,36 @@ public class HSController : MonoBehaviour
 		return BitConverter.ToString(new SHA1CryptoServiceProvider().ComputeHash(Encoding.Default.GetBytes(password))).Replace("-", String.Empty).ToUpper();
 	}
 
-	public IEnumerator PostScoresCoroutineLog(string name, int score, string tsp)
+	internal IEnumerator StartPostScoresCoroutine(string name, int score, string tsp, int algorithm, Action<string> action)
 	{
-		CoroutineWithData cd = new CoroutineWithData(this, PostScores(name, score, tsp));
-		yield return cd.coroutine;
-		Debug.Log("Result:\n" + cd.result);
+		String dateStringForComment = DateTime.Now.ToString(@"dd\/MM\/yyyy\/HH\:mm");
+		yield return StartPostScoresCoroutine(name, score, tsp, algorithm, GAME_NAME, dateStringForComment, action);
 	}
 
-	public void StartPostScoresCoroutineLog(string name, int score, string tsp)
+	internal void StartPostScoresCoroutine(string name, int score, string tsp, int algorithm)
 	{
-		StartCoroutine(PostScoresCoroutineLog(name, score, tsp));
+		String dateStringForComment = DateTime.Now.ToString(@"dd\/MM\/yyyy\/HH\:mm");
+		StartPostScoresCoroutine(name, score, tsp, algorithm, GAME_NAME, dateStringForComment);
+	}
+
+	public IEnumerator StartPostScoresCoroutine(string name, int score, string tsp, int algorithm, string game, string comment, Action<string> action)
+	{
+		yield return StartCoroutine(PostScores(name, score, tsp, algorithm, game, comment, action));
+	}
+
+	public void StartPostScoresCoroutine(string name, int score, string tsp, int algorithm, string game, string comment)
+	{
+		StartCoroutine(PostScores(name, score, tsp, algorithm, game, comment));
 	}
 
 	public void StartGetScoresCoroutine(string tspName, int numberOfEntries)
 	{
-		StartCoroutine(GetScores(tspName, numberOfEntries));
+		StartCoroutine(GetScores(tspName, GAME_NAME, numberOfEntries));
+	}
+
+	public IEnumerator StartGetScoresCoroutine(string tspName, int numberOfEntries, Action<string> action)
+	{
+		yield return StartCoroutine(GetScores(tspName, GAME_NAME, numberOfEntries, action));
 	}
 
 }

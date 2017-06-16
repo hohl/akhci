@@ -86,17 +86,17 @@ public class PlayerController : MonoBehaviour
 		myRigidbody.AddForce(movement * movementSpeed);
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	IEnumerator OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.CompareTag("End"))
 		{
 			Debug.Log("DEAD!!!!");
+		
 			Debug.Log ("Result: " + platformCont.Result);
 			cameraCont.SetGameOver(true);
 			pauseCont.SetGameOver(true);
-			//hsMuellerController.StartPostScoresCoroutine("Anonymous", (int)platformCont.Result, platformCont.GetCurrentTspName());
-			//hsMuellerController.StartGetScoresCoroutine(platformCont.GetCurrentTspName(), 10);
-			//Leaderboard.Instance.SubmitResultAsync(platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId());
+			
+			yield return SendResults();
 		}
 
 		if (other.CompareTag ("Gap"))
@@ -108,6 +108,15 @@ public class PlayerController : MonoBehaviour
 				platformScore++;
 			}
 		}
+	}
+
+	private IEnumerator SendResults()
+	{
+		Debug.Log("Attempt to send result: " + platformCont.Result);
+		print(hsMuellerController.GetScoresUrl(platformCont.GetCurrentTspName(),"ProjectANT", 10));
+		string result = null;
+		yield return hsMuellerController.StartPostScoresCoroutine("Anonymous", (int)platformCont.Result, platformCont.GetCurrentTspName(), platformCont.GetGeneratorAlgoId(), value => result = value);
+		print(result);
 	}
 
 	public int GetPlatformScore()

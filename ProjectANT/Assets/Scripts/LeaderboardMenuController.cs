@@ -15,10 +15,9 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 	private int pageIndex = 0;
 	private GlobalstatsIO_Leaderboard globalLeaderboard;
+	private HSController hsMuellerController;
 
-	void Start () {
-
-
+	IEnumerator Start () {
 		buttonBack.onClick.AddListener(GoBackToMenu);
 
 		leaderboardHeader = GameObject.FindGameObjectWithTag ("LeaderboardHeader");
@@ -45,6 +44,13 @@ public class LeaderboardMenuController : MonoBehaviour {
 		if (globalLeaderboard.data.Length <= leaderboardCells.Count) {
 			buttonNextPage.gameObject.SetActive(false);
 		}
+
+		//TODO: finish
+		hsMuellerController = GetComponent<HSController>();
+
+		string result = null;
+		yield return hsMuellerController.StartGetScoresCoroutine("test8", 100, value => result = value);
+		print("The result was:" + result);
 	}
 
 	private void FillLeaderboard() {
