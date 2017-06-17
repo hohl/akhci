@@ -5,12 +5,12 @@ using UnityEngine;
 
 public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 {
-	private const int PlayerFactor = Int32.MaxValue;
+	protected const int PlayerFactor = Int32.MaxValue;
 	private const int RecalcInterval = 3;
 
 	protected AntAlgorithm algo;
 	protected List<City> cities = new List<City> ();
-	private bool needsBuffer = true;
+	protected bool needsBuffer = true;
 	private int needsRecalcCounter = RecalcInterval;
 
 	public override double Result {
@@ -35,7 +35,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 
 	public City PreviousCity {
 		get;
-		private set;
+		protected set;
 	}
 
 	public PheromonesBasedPlatformGenerator (AntAlgorithm algo, int id, string name) : base(id, name)
@@ -74,7 +74,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 	protected float PseudoSafeFloat(float value)
 	{
 		// no, that method doesn't have any mathematical background,
-		// just an ungly hack which works for very unlikly cases
+		// just an ugly hack which works for very unlikly cases
 
 		if (float.IsPositiveInfinity (value))
 			return float.MaxValue / 2.0f;
@@ -99,7 +99,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 		Recalc (cities.Count);
 	}
 
-	private void RecalcIfNeeded()
+	protected void RecalcIfNeeded()
 	{
 		if (needsRecalcCounter == 0) {
 			Recalc (cities.Count / 3);

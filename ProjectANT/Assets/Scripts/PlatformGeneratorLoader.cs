@@ -18,6 +18,8 @@ public class PlatformGeneratorLoader
 		generators.Add(gen.ID, gen);
 		gen = new BestDistancesPlatformGenerator(CreateAntAlgorithm());
 		generators.Add(gen.ID, gen);
+		// gen = new TwoStepPlatformGenerator(CreateAntAlgorithm());
+		// generators.Add(gen.ID, gen);
 	}
 
 	public string GetGenNameById(int id)
