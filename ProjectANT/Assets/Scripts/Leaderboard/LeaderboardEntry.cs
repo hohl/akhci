@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using UnityEngine;
 
 public class LeaderboardEntry
@@ -26,9 +24,7 @@ public class LeaderboardEntry
 			}
 			else if (additional.key == "algo")
 			{
-				// TODO thorsten: this might not be that efficient..
-				PlatformGeneratorLoader loader = new PlatformGeneratorLoader();
-				this.algo = loader.GetGenNameById(Int32.Parse(additional.value));
+				this.algo = PlatformGeneratorLoader.GetGenNameById(Int32.Parse(additional.value));
 			}
 		}
 	}

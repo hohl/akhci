@@ -28,7 +28,7 @@ public class TwoStepPlatformGenerator : PheromonesBasedPlatformGenerator
 		}
 	}
 
-	public TwoStepPlatformGenerator (AntAlgorithm algo) : base(algo, 300, "twoStep")
+	public TwoStepPlatformGenerator (AntAlgorithm algo, int id, string name) : base(algo, id, name)
 	{
 	}
 

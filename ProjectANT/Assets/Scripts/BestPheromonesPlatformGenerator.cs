@@ -3,7 +3,7 @@ using System;
 
 public class BestPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 {
-	public BestPheromonesPlatformGenerator(AntAlgorithm algo) : base(algo, 200, "bPhero")
+	public BestPheromonesPlatformGenerator(AntAlgorithm algo, int id, string name) : base(algo, id, name)
 	{
 	}
 

@@ -3,7 +3,7 @@ using System;
 
 public class BestDistancesPlatformGenerator : PheromonesBasedPlatformGenerator
 {
-	public BestDistancesPlatformGenerator (AntAlgorithm algo) : base(algo, 300, "bDist")
+	public BestDistancesPlatformGenerator (AntAlgorithm algo, int id, string name) : base(algo, id, name)
 	{
 	}
 
