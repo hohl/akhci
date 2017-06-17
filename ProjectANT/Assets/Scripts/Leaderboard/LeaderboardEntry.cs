@@ -16,7 +16,8 @@ public class LeaderboardEntry
 		this.name = leaderboardValue.name;
 		this.Rank = Int32.Parse(leaderboardValue.rank);
 		this.distance = Single.Parse(leaderboardValue.value);
-	
+		
+
 		foreach (GlobalstatsIO_Additional additional in leaderboardValue.additionals)
 		{
 			if (additional.key == "graph")
@@ -25,7 +26,9 @@ public class LeaderboardEntry
 			}
 			else if (additional.key == "algo")
 			{
-				this.algo = additional.value;
+				// TODO thorsten: this might not be that efficient..
+				PlatformGeneratorLoader loader = new PlatformGeneratorLoader();
+				this.algo = loader.GetGenNameById(Int32.Parse(additional.value));
 			}
 		}
 	}

@@ -19,6 +19,7 @@ public abstract class PlatformGenerator
 	}
 
 	public virtual City SelectedCity { get; set; }
+	public virtual string Name { get; private set; }
 
 	public abstract Platform Next ();
 
@@ -26,8 +27,9 @@ public abstract class PlatformGenerator
 	{
 	}
 
-	public PlatformGenerator(int id)
+	public PlatformGenerator(int id, string name)
 	{
 		this.ID = id;
+		this.Name = name;
 	}
 }

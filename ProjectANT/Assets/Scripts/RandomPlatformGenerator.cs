@@ -4,7 +4,7 @@ public class RandomPlatformGenerator : PlatformGenerator
 {
 	protected Random rand = new Random ();
 
-	public RandomPlatformGenerator (int id) : base (id)
+	public RandomPlatformGenerator (int id, string name) : base (id, name)
 	{
 	}
 
