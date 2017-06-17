@@ -11,27 +11,6 @@ public class HSController : MonoBehaviour
 	public static string addScoreURL = "http://www.andrejmueller.com/highscoresIML/addscore.php?";
 	public static string highscoreURL = "http://www.andrejmueller.com/highscoresIML/getscores.php?";
 
-	public class CoroutineWithData
-	{
-		public Coroutine coroutine { get; private set; }
-		public object result;
-		private IEnumerator target;
-		public CoroutineWithData(MonoBehaviour owner, IEnumerator target)
-		{
-			this.target = target;
-			this.coroutine = owner.StartCoroutine(Run());
-		}
-
-		private IEnumerator Run()
-		{
-			while (target.MoveNext())
-			{
-				result = target.Current;
-				yield return result;
-			}
-		}
-	}
-
 	void Start()
 	{
 		//StartCoroutine(GetScores("test2", "TravellingSnakesman", 10));
@@ -167,4 +146,35 @@ public class HSController : MonoBehaviour
 		yield return StartCoroutine(GetScores(tspName, GAME_NAME, numberOfEntries, action));
 	}
 
+}
+
+// same as in GlobalstatsIO_Leaderboard
+public class HSMuellerLeaderboard
+{
+	private LeaderboardEntry[] data;
+
+	public HSMuellerLeaderboard(string serverResponse)
+	{
+		string[] lineDelimiters = { "<br>" };
+		string[] lines = serverResponse.Split(lineDelimiters, StringSplitOptions.RemoveEmptyEntries);
+		Data = new LeaderboardEntry[lines.Length];
+
+		for(int i = 0; i < lines.Length; i++)
+		{
+			Data[i] = new LeaderboardEntry(i+1, "test8", lines[i]);
+		}
+	}
+
+	public LeaderboardEntry[] Data
+	{
+		get
+		{
+			return data;
+		}
+
+		set
+		{
+			data = value;
+		}
+	}
 }

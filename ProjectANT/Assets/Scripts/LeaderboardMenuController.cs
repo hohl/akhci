@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LeaderboardMenuController : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 	private int pageIndex = 0;
 	private GlobalstatsIO_Leaderboard globalLeaderboard;
+	private HSMuellerLeaderboard muellerLeaderboard;
 	private HSController hsMuellerController;
 
 	IEnumerator Start () {
@@ -34,7 +36,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 
 		globalLeaderboard = Leaderboard.Instance.GetScore ();
-		FillLeaderboard ();
+		//FillLeaderboard ();
 
 		buttonPreviousPage.onClick.AddListener(PreviousPage);
 		buttonNextPage.onClick.AddListener(NextPage);
@@ -45,45 +47,61 @@ public class LeaderboardMenuController : MonoBehaviour {
 			buttonNextPage.gameObject.SetActive(false);
 		}
 
-		//TODO: finish
+		// For now, don't show mueller leaderboard
+		// TODO: make user choose graph
 		hsMuellerController = GetComponent<HSController>();
-
-		string result = null;
+		/*string result = null;
 		yield return hsMuellerController.StartGetScoresCoroutine("test8", 100, value => result = value);
 		print("The result was:" + result);
+		muellerLeaderboard = new HSMuellerLeaderboard(result);
+		FillMuellerLeaderboard();*/
+	}
+
+	private void FillMuellerLeaderboard()
+	{
+		for (int i = 0; i < leaderboardCells.Count; i++)
+		{
+			if (pageIndex * leaderboardCells.Count + i < globalLeaderboard.data.Length)
+			{
+				LeaderboardEntry entry = muellerLeaderboard.Data[pageIndex * leaderboardCells.Count + i];
+				SetLeaderboardEntryToUi(leaderboardCells[i], entry);
+			}
+			else
+			{
+				leaderboardCells[i].SetActive(false);
+			}
+		}
 	}
 
 	private void FillLeaderboard() {
-
 		if (globalLeaderboard.data == null) {
 			return;
 		}
 
-		for (int i = 0; i < leaderboardCells.Count; i++) {
-			if (pageIndex * leaderboardCells.Count + i < globalLeaderboard.data.Length) {
-
-				GameObject cell = leaderboardCells [i];
-				LeaderboardItemController cellController = cell.GetComponent<LeaderboardItemController> ();
+		for (int i = 0; i < leaderboardCells.Count; i++)
+		{
+			if (pageIndex * leaderboardCells.Count + i < globalLeaderboard.data.Length)
+			{
 				GlobalstatsIO_LeaderboardValue leaderboardValue = globalLeaderboard.data [pageIndex * leaderboardCells.Count + i];
-
-				cellController.textName.text = leaderboardValue.name;
-				cellController.textRank.text = leaderboardValue.rank;
-				cellController.textDistance.text = leaderboardValue.value;
-
-				foreach(GlobalstatsIO_Additional additional in leaderboardValue.additionals) {
-
-					if (additional.key == "graph") {
-						cellController.textGraph.text = additional.value;
-					} else if (additional.key == "algo") {
-						cellController.textAlgo.text = additional.value;
-					}
-				}
-
-				cell.SetActive (true);
-			} else {
+				SetLeaderboardEntryToUi(leaderboardCells[i], new LeaderboardEntry(leaderboardValue));
+			}
+			else
+			{
 				leaderboardCells [i].SetActive (false);
 			}
 		} 
+	}
+
+	private void SetLeaderboardEntryToUi(GameObject cell, LeaderboardEntry entry)
+	{
+		LeaderboardItemController cellController = cell.GetComponent<LeaderboardItemController>();
+		cellController.textName.text = entry.Name;
+		cellController.textRank.text = entry.Rank.ToString();
+		cellController.textDistance.text = entry.Distance.ToString();
+		cellController.textGraph.text = entry.Graph;
+		cellController.textAlgo.text = entry.Algo;
+
+		cell.SetActive(true);
 	}
 
 	private void FillLeaderboardMueller()
