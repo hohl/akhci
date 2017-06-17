@@ -21,7 +21,7 @@ public class LeaderboardEntry
 		{
 			if (additional.key == "graph")
 			{
-				this.graph = additional.value;
+				this.graph = TspLoader.Instance.GetTspNameById(Int32.Parse(additional.value));
 			}
 			else if (additional.key == "algo")
 			{

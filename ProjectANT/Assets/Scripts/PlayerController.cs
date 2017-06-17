@@ -113,10 +113,10 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator SendResults()
 	{
 		Debug.Log("Attempt to send result: " + platformCont.Result);
-		print(hsMuellerController.GetScoresUrl(platformCont.GetCurrentTspName(),"ProjectANT", 10));
+		Leaderboard.Instance.SubmitResult("Anonymous", (float)platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId());
+
 		string result = null;
 		yield return hsMuellerController.StartPostScoresCoroutine("Anonymous", (int)platformCont.Result, platformCont.GetCurrentTspName(), platformCont.GetGeneratorAlgoId(), value => result = value);
-		print(result);
 	}
 
 	public int GetPlatformScore()

@@ -7,14 +7,22 @@ using UnityEngine;
 public class TspLoader
 {
 	private static TspLoader instance;
-	private TspInfo[] allTSPs = new TspInfo[] { new TspTest8(), new TspTest50()//, new Berlin52(), new Eil51()
+	private Dictionary<int, TspInfo> allTSPs = new Dictionary<int, TspInfo>();
+
+	private TspLoader() {
+		//  new TspTest8(), new TspTest50()//, new Berlin52(), new Eil51()
 		// These will load but take a bit long:
 		//		new Eil101(),
 		// These all won't load???
-		//		new Dantzig42(), new Dsj1000(), new Fnl4461(), new Si1032()
-	};
+		//		new Dantzig42(), new Dsj1000(), new Fnl4461(), new Si1032()new TspTest8(), new TspTest50()
 
-	private TspLoader() { }
+
+		TspInfo tsp = new TspTest8();
+		allTSPs.Add(tsp.GetId(), tsp);
+		
+		tsp = new TspTest50();
+		allTSPs.Add(tsp.GetId(), tsp);
+	}
 
 	public static TspLoader Instance
 	{
@@ -28,17 +36,25 @@ public class TspLoader
 		}
 	}
 
-	public TspInfo[] GetAllTSPs()
+	public Dictionary<int, TspInfo> GetAllTSPs()
 	{
 		return allTSPs;
+	}
+
+	public string GetTspNameById(int id)
+	{
+		TspInfo value = null;
+		bool found = allTSPs.TryGetValue(id, out value);
+
+		return found ? value.GetName() : "?(" + id + ")";
 	}
 
 	public TspInfo SelectRandomTsp()
 	{
 		System.Random rnd = new System.Random(System.DateTime.Now.Millisecond);
-		int index = rnd.Next(0, allTSPs.Length);
-		// Debug.Log("Overall: " + allTSPs.Length+"index:" + index);
-		return allTSPs[index];
+		int index = rnd.Next(0, allTSPs.Count);
+		List<int> keys = new List<int>(allTSPs.Keys);
+		return allTSPs[keys[index]];
 	}
 
 	// TSP generation here below
