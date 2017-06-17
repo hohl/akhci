@@ -19,6 +19,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 	private HSMuellerLeaderboard muellerLeaderboard;
 	private HSController hsMuellerController;
 
+	// keep IEnumerator for now as signature
 	IEnumerator Start () {
 		buttonBack.onClick.AddListener(GoBackToMenu);
 
@@ -36,7 +37,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 
 		globalLeaderboard = Leaderboard.Instance.GetScore ();
-		//FillLeaderboard ();
+		FillLeaderboard ();
 
 		buttonPreviousPage.onClick.AddListener(PreviousPage);
 		buttonNextPage.onClick.AddListener(NextPage);
@@ -55,6 +56,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 		print("The result was:" + result);
 		muellerLeaderboard = new HSMuellerLeaderboard(result);
 		FillMuellerLeaderboard();*/
+		yield return null;
 	}
 
 	private void FillMuellerLeaderboard()

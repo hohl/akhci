@@ -353,6 +353,9 @@ public class GlobalstatsIO
 		WWW www = new WWW(url, pData, headers);
 
 
+		// NOTE thorsten: partially synchronous
+		// literal comment from here: https://docs.unity3d.com/ScriptReference/WWW-isDone.html
+		// "You should not write loops that spin until download is done; use coroutines instead."
 		while (!www.isDone)
 		{
 			System.Threading.Thread.Sleep(100);
