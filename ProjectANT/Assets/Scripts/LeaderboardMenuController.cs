@@ -12,6 +12,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 	public Button buttonPreviousPage;
 	public InputField inputFieldName;
 	public Button buttonSendName;
+	public Dropdown dropdownGraph;
 
 	private List<GameObject> leaderboardCells = new List<GameObject>();
 	private GameObject leaderboardHeader;
@@ -29,7 +30,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 		}
 
 		buttonBack.onClick.AddListener(GoBackToMenu);
-
+		SetUpDropdown();
 		leaderboardHeader = GameObject.FindGameObjectWithTag ("LeaderboardHeader");
 
 		// Getting the Leaderboard cells
@@ -44,7 +45,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 
 		globalLeaderboard = Leaderboard.Instance.GetScore ();
-		FillLeaderboard ();
+		FillLeaderboard ((dropdownGraph.options[dropdownGraph.value]).text);
 
 		buttonPreviousPage.onClick.AddListener(PreviousPage);
 		buttonNextPage.onClick.AddListener(NextPage);
@@ -65,6 +66,30 @@ public class LeaderboardMenuController : MonoBehaviour {
 		muellerLeaderboard = new HSMuellerLeaderboard(result);
 		FillMuellerLeaderboard();*/
 		yield return null;
+	}
+
+	private void SetUpDropdown()
+	{
+		dropdownGraph.ClearOptions();
+		List<string> tspNames = new List<string>();
+		Dictionary<int, TspInfo> tspInfos = TspLoader.Instance.GetAllTSPs();
+		foreach (KeyValuePair<int, TspInfo> tspInfo in tspInfos)
+		{
+			tspNames.Add(tspInfo.Value.GetName());
+		}
+		tspNames.Sort();
+		dropdownGraph.AddOptions(tspNames);
+		dropdownGraph.RefreshShownValue();
+
+		dropdownGraph.onValueChanged.AddListener(delegate {
+			OnSetTsp(dropdownGraph);
+		});
+
+	}
+
+	private void OnSetTsp(Dropdown dropdownGraph)
+	{
+		FillLeaderboard((dropdownGraph.options[dropdownGraph.value]).text);
 	}
 
 	private void SetUserName()
@@ -88,7 +113,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 		}
 	}
 
-	private void FillLeaderboard() {
+	private void FillLeaderboard(string graph) {
 		if (globalLeaderboard.data == null) {
 			return;
 		}
@@ -170,14 +195,14 @@ public class LeaderboardMenuController : MonoBehaviour {
 	private void NextPage() {
 
 		pageIndex++;
-		FillLeaderboard ();
+		FillLeaderboard ((dropdownGraph.options[dropdownGraph.value]).text);
 		buttonPreviousPage.gameObject.SetActive (true);
 	}
 
 	private void PreviousPage() {
 
 		pageIndex--;
-		FillLeaderboard ();
+		FillLeaderboard ((dropdownGraph.options[dropdownGraph.value]).text);
 
 		if (pageIndex == 0) {
 			buttonPreviousPage.gameObject.SetActive (false);
