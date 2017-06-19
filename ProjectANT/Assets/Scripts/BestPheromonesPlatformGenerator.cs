@@ -7,37 +7,13 @@ public class BestPheromonesPlatformGenerator : PheromonesBasedPlatformGenerator
 	{
 	}
 
-	protected override Platform FindNextCities (City startCity)
+	protected override void SortCities (City startCity)
 	{
-		int startCityIndex = cities.IndexOf (startCity);
-
-		City firstCity = null;
-		float firstPheromons = 0.0f;
-		City secondCity = null;
-		float secondPheromons = 0.0f;
-		for (int targetCityIndex = 0; targetCityIndex < cities.Count; ++targetCityIndex) {
-			if (startCityIndex == targetCityIndex)
-				continue;
-
-			float pheromons = (float) algo.getPheromones ().getPheromone (startCityIndex, targetCityIndex);
-			if (firstPheromons < pheromons) {
-				secondCity = firstCity;
-				secondPheromons = firstPheromons;
-				firstCity = cities[targetCityIndex];
-				firstPheromons = pheromons;
-			} else if (secondPheromons < pheromons) {
-				secondCity = cities[targetCityIndex];
-				secondPheromons = pheromons;
-			}
-		}
-
-		// normalize values! [0..1]
-		firstPheromons = PseudoSafeFloat(firstPheromons);
-		secondPheromons = PseudoSafeFloat (secondPheromons);
-		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
-		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
-
-		return new Platform (new Gap (firstPheromons, firstCity), new Gap (secondPheromons, secondCity));
+		cities.Sort (delegate(City a, City b) {
+			double deltaA = algo.getPheromones ().getPheromone (startCity.getId(), a.getId());
+			double deltaB = algo.getPheromones ().getPheromone (startCity.getId(), b.getId());
+			return deltaA.CompareTo(deltaB);
+		});
 	}
 }
 	
