@@ -12,8 +12,8 @@ public sealed class Leaderboard
 	private GlobalstatsIO gs = new GlobalstatsIO();
 
 	private Leaderboard() {
-		GlobalstatsIO.api_id = "SVJqT6lOZb3qMRX2iwTQ0V6593wWzqirl1Se8e37";
-		GlobalstatsIO.api_secret = "7xcYveh18813e7diE9R4sjqucFCrIJRQh3OMi6Oq";
+		GlobalstatsIO.api_id = "SB8HfCieIc1pSOm1iLCpHa1jnou3zo7sZgaeSttA";
+		GlobalstatsIO.api_secret = "v0yknzC9c1Qm39KsDN22Vu1bEg37JENeEmz2Wbb8";
 	}
 
 	public static Leaderboard Instance
