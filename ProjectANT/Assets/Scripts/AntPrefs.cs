@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using System;
+using UnityEngine;
 
 public class AntPrefs
 {
@@ -27,5 +27,10 @@ public class AntPrefs
 	public string GetUsername()
 	{
 		return PlayerPrefs.GetString(PREF_USERNAME, "Anonymous");
+	}
+
+	public bool IsUsernameStored()
+	{
+		return PlayerPrefs.HasKey(PREF_USERNAME);
 	}
 }

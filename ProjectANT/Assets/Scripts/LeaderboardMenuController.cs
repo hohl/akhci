@@ -10,6 +10,8 @@ public class LeaderboardMenuController : MonoBehaviour {
 	public Button buttonBack;
 	public Button buttonNextPage;
 	public Button buttonPreviousPage;
+	public InputField inputFieldName;
+	public Button buttonSendName;
 
 	private List<GameObject> leaderboardCells = new List<GameObject>();
 	private GameObject leaderboardHeader;
@@ -21,6 +23,11 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 	// keep IEnumerator for now as signature
 	IEnumerator Start () {
+		if (AntPrefs.Instance.IsUsernameStored())
+		{
+			inputFieldName.text = AntPrefs.Instance.GetUsername();
+		}
+
 		buttonBack.onClick.AddListener(GoBackToMenu);
 
 		leaderboardHeader = GameObject.FindGameObjectWithTag ("LeaderboardHeader");
@@ -41,6 +48,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 		buttonPreviousPage.onClick.AddListener(PreviousPage);
 		buttonNextPage.onClick.AddListener(NextPage);
+		buttonSendName.onClick.AddListener(SetUserName);
 
 		buttonPreviousPage.gameObject.SetActive (false);
 
@@ -57,6 +65,11 @@ public class LeaderboardMenuController : MonoBehaviour {
 		muellerLeaderboard = new HSMuellerLeaderboard(result);
 		FillMuellerLeaderboard();*/
 		yield return null;
+	}
+
+	private void SetUserName()
+	{
+		AntPrefs.Instance.StoreUsername(inputFieldName.text);
 	}
 
 	private void FillMuellerLeaderboard()
