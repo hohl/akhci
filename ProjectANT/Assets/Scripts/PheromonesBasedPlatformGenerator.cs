@@ -71,7 +71,47 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 		}
 	}
 
-	protected abstract Platform FindNextCities (City startCity);
+	protected virtual Platform FindNextCities (City startCity)
+	{
+		SortCities (startCity);
+
+		City firstCity = null, secondCity = null;
+		for (int index = 0, count = 0; index < cities.Count && count < 2; ++index) {
+			if (HasBeenVisited (cities [index])) {
+				continue;
+			}
+
+			if (count == 0) {
+				firstCity = cities [index];
+			} else if (count == 1) {
+				secondCity = cities [index];
+			}
+			++count;
+		}
+
+		if (firstCity == null || secondCity == null) {
+			// no more cities left... just return random
+			return NextRandom ();
+		}
+
+		float firstPheromons = PseudoSafeFloat((float) (algo.getPheromones ().getPheromone (startCity.getId (), firstCity.getId ())));
+		float secondPheromons = PseudoSafeFloat((float) (algo.getPheromones ().getPheromone (startCity.getId (), secondCity.getId ())));
+
+		// normalize values! [0..1]
+		firstPheromons = -0.3f * firstPheromons / (firstPheromons + secondPheromons) + 0.4f;
+		secondPheromons = 0.3f * secondPheromons / (firstPheromons + secondPheromons) + 0.6f;
+
+		return new Platform (new Gap (firstPheromons, firstCity), new Gap (secondPheromons, secondCity));
+	}
+
+	/// <summary>
+	/// Override this to use a different sorting for the generator.
+	/// 
+	/// For ex. sorting by pheromons or by distances.
+	/// </summary>
+	protected virtual void SortCities (City startCity)
+	{
+	}
 
 	/// <summary>
 	/// Visits the specified city.
