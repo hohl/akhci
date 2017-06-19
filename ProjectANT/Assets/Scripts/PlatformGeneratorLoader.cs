@@ -82,8 +82,8 @@ public class PlatformGeneratorLoader
 		generators.Add(gen.ID, gen);
 		gen = new BestDistancesPlatformGenerator(algo, infoBestDist.Id, infoBestDist.Name);
 		generators.Add(gen.ID, gen);
-		// not enabled or now gen = new TwoStepPlatformGenerator(algo, infoTwoSteps.id, infoTwoSteps.name);
-		// generators.Add(gen.ID, gen);
+		gen = new TwoStepPlatformGenerator(algo, infoTwoSteps.id, infoTwoSteps.name);
+		generators.Add(gen.ID, gen);
 	}
 
 	public static string GetGenNameById(int id)
