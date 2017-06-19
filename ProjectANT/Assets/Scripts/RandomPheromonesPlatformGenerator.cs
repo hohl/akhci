@@ -29,6 +29,17 @@ public class RandomPheromonesPlatformGenerator : PheromonesBasedPlatformGenerato
 
 		return new Platform (new Gap (firstPheromons, firstCity), new Gap (secondPheromons, secondCity));
 	}
+
+	protected override void SortCities (City unused)
+	{
+		int[] randomValues = new int[cities.Count];
+		for (int index = 0; index < cities.Count; ++index) {
+			randomValues [index] = rand.Next ();
+		}
+		cities.Sort (delegate(City a, City b) {
+			return randomValues[a.getId()].CompareTo(randomValues[b.getId()]);
+		});
+	}
 }
 
 
