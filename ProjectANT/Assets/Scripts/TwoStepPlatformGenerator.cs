@@ -20,6 +20,8 @@ public class TwoStepPlatformGenerator : PheromonesBasedPlatformGenerator
 				Debug.Log (String.Format ("AntAlgo: Increase pheromones of path {0} to {1} to {2}.", startCity.getId (), firstCity.getId (), secondCity.getId ()));
 				algo.getPheromones ().increasePheromoneAS (startCity.getId (), firstCity.getId (), PlayerFactor);
 				algo.getPheromones ().increasePheromoneAS (firstCity.getId (), secondCity.getId (), PlayerFactor);
+				Visit (firstCity);
+				Visit (secondCity);
 				RecalcIfNeeded ();
 				startCity = firstCity = secondCity = null;
 			} else if (firstCity != value) {
@@ -62,9 +64,26 @@ public class TwoStepPlatformGenerator : PheromonesBasedPlatformGenerator
 			return deltaA.CompareTo(deltaB);
 		});
 
-		City firstCity = cities[0];
+		City firstCity = null, secondCity = null;
+		for (int index = 0, count = 0; index < cities.Count && count < 2; ++index) {
+			if (HasBeenVisited (cities [index])) {
+				continue;
+			}
+
+			if (count == 0) {
+				firstCity = cities [index];
+			} else if (count == 1) {
+				secondCity = cities [index];
+			}
+			++count;
+		}
+
+		if (firstCity == null || secondCity == null) {
+			// no more cities left... just return random
+			return NextRandom ();
+		}
+
 		float firstPheromons = PseudoSafeFloat((float) (algo.getPheromones ().getPheromone (startCity.getId (), firstCity.getId ())));
-		City secondCity = cities[1];
 		float secondPheromons = PseudoSafeFloat((float) (algo.getPheromones ().getPheromone (startCity.getId (), secondCity.getId ())));
 
 		// normalize values! [0..1]
