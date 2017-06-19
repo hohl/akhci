@@ -17,6 +17,7 @@ public class PlatformGeneratorLoader
 	private static NameTuple infoRandomPhero;
 	private static NameTuple infoBestDist;
 	private static NameTuple infoTwoSteps;
+	private static NameTuple infoWeighted;
 
 	// helper
 	public class NameTuple
@@ -66,12 +67,14 @@ public class PlatformGeneratorLoader
 		infoRandomPhero = new NameTuple(100, "random");
 		infoBestDist = new NameTuple(300, "bDist");
 		infoTwoSteps = new NameTuple(400, "2step");
+		infoWeighted = new NameTuple (500, "weighted");
 
 		genNames = new Dictionary<int, string>();
 		genNames.Add(infoBestPhero.Id, infoBestPhero.Name);
 		genNames.Add(infoRandomPhero.Id, infoRandomPhero.Name);
 		genNames.Add(infoBestDist.Id, infoBestDist.Name);
 		genNames.Add(infoTwoSteps.Id, infoTwoSteps.Name);
+		genNames.Add (infoWeighted.Id, infoWeighted.Name);
 	}
 
 	public PlatformGeneratorLoader()
@@ -87,6 +90,8 @@ public class PlatformGeneratorLoader
 		generators.Add(gen.ID, gen);
 		gen = new TwoStepPlatformGenerator(algo, infoTwoSteps.Id, infoTwoSteps.Name);
 		generators.Add(gen.ID, gen);
+		gen = new WeightedPlatformGenerator (algo, infoWeighted.Id, infoWeighted.Name);
+		generators.Add (gen.ID, gen);
 	}
 
 	public static string GetGenNameById(int id)
