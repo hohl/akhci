@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject playerCamera;
 	public GameObject menuEnd;
 	public GameObject platformControllerObject;
+	public Text textScore;
 
 	private CameraController cameraCont;
 	private PauseController pauseCont;
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
 			{
 				platformCont.Select (gapController.City);
 				platformScore++;
+				textScore.text = platformScore.ToString ();
 			}
 		}
 	}
