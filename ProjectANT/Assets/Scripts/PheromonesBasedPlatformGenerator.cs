@@ -43,7 +43,8 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 	public PheromonesBasedPlatformGenerator (AntAlgorithm algo, int id, string name) : base(id, name)
 	{
 		this.algo = algo;
-		Load ();
+		this.cities = algo.getCities ();
+		this.SelectedCity = cities [0];
 	}
 
 	public override void Finish ()
@@ -162,19 +163,5 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 		Debug.Log (String.Format ("AntAlgo: Run {0} iterations...", iterations));
 		for (int i = 0; i < iterations; i++)
 			algo.iteration ();
-	}
-
-	private void Load ()
-	{
-		//TspInfo[] allTSPs = TspLoader.Instance.GetAllTSPs();
-		CurrentTsp = TspLoader.Instance.SelectRandomTsp(); //allTSPs[2];
-		cities = CurrentTsp.Load();
-
-		Debug.Log("Loaded TSP '" + CurrentTsp.GetName() + "' with " + cities.Count + " cities.");
-
-		SelectedCity = cities [0];
-		algo.setCities(cities);
-		algo.init();
-		Recalc (cities.Count);
 	}
 }

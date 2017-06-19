@@ -17,6 +17,7 @@ public class PlatformController : MonoBehaviour
 	private float platformHeight;
 
 	private PlatformGenerator generator;
+	private TspInfo tsp;
 
 	public double Result {
 		get {
@@ -45,6 +46,7 @@ public class PlatformController : MonoBehaviour
 
 		var loader = new PlatformGeneratorLoader ();
 		generator = loader.LoadAny ();
+		tsp = loader.Tsp;
 		Debug.Log (String.Format ("Use PlatformGenerator #{0}", generator.ID));
 
 		CalculateCorridorValues();
@@ -112,12 +114,12 @@ public class PlatformController : MonoBehaviour
 
 	internal string GetCurrentTspName()
 	{
-		return generator.CurrentTsp.GetName();
+		return tsp.GetName();
 	}
 
 	internal int GetCurrentTspId()
 	{
-		return generator.CurrentTsp.GetId();
+		return tsp.GetId();
 	}
 
 	internal int GetGeneratorAlgoId()

@@ -1,4 +1,5 @@
 ﻿using AntAlgorithms;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 
@@ -7,7 +8,7 @@ using System.Collections.Generic;
  */
 public class PlatformGeneratorLoader
 {
-	private Random rand = new Random();
+	private System.Random rand = new System.Random();
 	private Dictionary<int, PlatformGenerator> generators = new Dictionary<int, PlatformGenerator>();
 
 	// helper for easy access to names (sorry)
@@ -56,6 +57,8 @@ public class PlatformGeneratorLoader
 		}
 	}
 
+	public TspInfo Tsp { get; private set; }
+
 	// i know that this is not pretty, but it's pretty much the most performant way
 	static PlatformGeneratorLoader()
 	{
@@ -103,9 +106,20 @@ public class PlatformGeneratorLoader
 		return generators [keys[rand.Next () % keys.Count]];
 	}
 
-	private static AntAlgorithm CreateAntAlgorithm()
+	private AntAlgorithm CreateAntAlgorithm()
 	{
-		return new ASAlgorithm (1, 2, 100, 6);
+		Tsp = TspLoader.Instance.SelectRandomTsp();
+		List<City> cities = Tsp.Load();
+		Debug.Log("Loaded TSP '" + Tsp.GetName() + "' with " + cities.Count + " cities.");
+
+		AntAlgorithm algo = new ASAlgorithm (1, 2, 100, 6);
+		algo.setCities(cities);
+		algo.init();
+
+		for (int i = 0; i < 5; i++)
+			algo.iteration ();
+
+		return algo;
 	}
 }
 	
