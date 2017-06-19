@@ -171,6 +171,10 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 		pageIndex++;
 		FillLeaderboard ();
+
+		if ((pageIndex + 1) * leaderboardCells.Count >= globalLeaderboard.data.Length) {
+			buttonNextPage.gameObject.SetActive (false);
+		}
 		buttonPreviousPage.gameObject.SetActive (true);
 	}
 
@@ -182,6 +186,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 		if (pageIndex == 0) {
 			buttonPreviousPage.gameObject.SetActive (false);
 		}
+		buttonNextPage.gameObject.SetActive (true);
 	}
 
 }
