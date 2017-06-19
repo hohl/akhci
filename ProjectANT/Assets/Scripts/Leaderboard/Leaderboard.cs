@@ -40,14 +40,7 @@ public sealed class Leaderboard
 			// An Error occured
 		}
 	}
-
-	//TODO doesn't work
-	public void SubmitResultAsync(double distance, int graphId, int algorithmId)
-	{
-		Thread m_Thread = new Thread(() => SubmitResult("Anonymous", distance, graphId, algorithmId));
-		m_Thread.Start();
-	}
-
+	
 	// No idea if that works
 	public GlobalstatsIO_Leaderboard GetScore() {
 
