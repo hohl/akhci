@@ -32,9 +32,10 @@ public class EndPlatformController : MonoBehaviour {
 				endCollider.transform.position.y - platformSpeed * Time.deltaTime,
 				endCollider.transform.position.z);
 		} else {
-			endCollider.transform.position = new Vector2 (
+			endCollider.transform.position = new Vector3 (
 				endCollider.transform.position.x, 
-				movingPoint.transform.position.y - movingPoint.transform.localScale.y);
+				movingPoint.transform.position.y - movingPoint.transform.localScale.y, 
+				endCollider.transform.position.z);
 		}
 
 		int score = playerController.GetPlatformScore ();
