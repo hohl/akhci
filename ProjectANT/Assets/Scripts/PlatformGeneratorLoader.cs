@@ -60,7 +60,7 @@ public class PlatformGeneratorLoader
 	static PlatformGeneratorLoader()
 	{
 		infoBestPhero = new NameTuple(200, "bPhero");
-		infoRandomPhero = new NameTuple(100, "rPhero");
+		infoRandomPhero = new NameTuple(100, "random");
 		infoBestDist = new NameTuple(300, "bDist");
 		infoTwoSteps = new NameTuple(400, "2step");
 
