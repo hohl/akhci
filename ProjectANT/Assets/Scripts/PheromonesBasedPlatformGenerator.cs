@@ -10,6 +10,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 
 	protected AntAlgorithm algo;
 	protected List<City> cities = new List<City> ();
+	protected List<City> visitedCities = new List<City> ();
 	protected bool needsBuffer = true;
 	private int needsRecalcCounter = RecalcInterval;
 
@@ -28,6 +29,7 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 			if (PreviousCity != null) {
 				Debug.Log (String.Format ("AntAlgo: Increase pheromones of path {0} to {1}.", PreviousCity.getId (), value.getId ()));
 				algo.getPheromones ().increasePheromoneAS (PreviousCity.getId (), value.getId (), PlayerFactor);
+				Visit (SelectedCity);
 				RecalcIfNeeded ();
 			}
 		}
@@ -71,6 +73,25 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 
 	protected abstract Platform FindNextCities (City startCity);
 
+	/// <summary>
+	/// Visits the specified city.
+	/// </summary>
+	/// <param name="city">The city to visit.</param>
+	protected void Visit(City city)
+	{
+		visitedCities.Add (city);
+	}
+
+	/// <summary>
+	/// Determines whether this city has been visited already.
+	/// </summary>
+	/// <returns><c>true</c> if this city has been visited already; otherwise, <c>false</c>.</returns>
+	/// <param name="city">The city to test.</param>
+	protected bool HasBeenVisited(City city)
+	{
+		return visitedCities.Contains (city);
+	}
+
 	protected float PseudoSafeFloat(float value)
 	{
 		// no, that method doesn't have any mathematical background,
@@ -83,20 +104,6 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 			return float.MinValue / 2.0f;
 
 		return value;
-	}
-
-	private void Load ()
-	{
-		//TspInfo[] allTSPs = TspLoader.Instance.GetAllTSPs();
-		CurrentTsp = TspLoader.Instance.SelectRandomTsp(); //allTSPs[2];
-		cities = CurrentTsp.Load();
-
-		Debug.Log("Loaded TSP '" + CurrentTsp.GetName() + "' with " + cities.Count + " cities.");
-
-		SelectedCity = cities [0];
-		algo.setCities(cities);
-		algo.init();
-		Recalc (cities.Count);
 	}
 
 	protected void RecalcIfNeeded()
@@ -115,5 +122,19 @@ public abstract class PheromonesBasedPlatformGenerator : RandomPlatformGenerator
 		Debug.Log (String.Format ("AntAlgo: Run {0} iterations...", iterations));
 		for (int i = 0; i < iterations; i++)
 			algo.iteration ();
+	}
+
+	private void Load ()
+	{
+		//TspInfo[] allTSPs = TspLoader.Instance.GetAllTSPs();
+		CurrentTsp = TspLoader.Instance.SelectRandomTsp(); //allTSPs[2];
+		cities = CurrentTsp.Load();
+
+		Debug.Log("Loaded TSP '" + CurrentTsp.GetName() + "' with " + cities.Count + " cities.");
+
+		SelectedCity = cities [0];
+		algo.setCities(cities);
+		algo.init();
+		Recalc (cities.Count);
 	}
 }

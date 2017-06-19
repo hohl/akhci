@@ -10,6 +10,11 @@ public class RandomPlatformGenerator : PlatformGenerator
 
 	public override Platform Next ()
 	{
+		return NextRandom ();	
+	}
+
+	protected Platform NextRandom ()
+	{
 		const double buf = 0.225; // <- minimum distance between two gaps
 
 		if (rand.NextDouble () > 0.4f) 

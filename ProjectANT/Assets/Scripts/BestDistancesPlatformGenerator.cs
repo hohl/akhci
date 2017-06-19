@@ -15,9 +15,26 @@ public class BestDistancesPlatformGenerator : PheromonesBasedPlatformGenerator
 			return deltaA.CompareTo(deltaB);
 		});
 
-		City firstCity = cities[0];
+		City firstCity = null, secondCity = null;
+		for (int index = 0, count = 0; index < cities.Count && count < 2; ++index) {
+			if (HasBeenVisited (cities [index])) {
+				continue;
+			}
+
+			if (count == 0) {
+				firstCity = cities [index];
+			} else if (count == 1) {
+				secondCity = cities [index];
+			}
+			++count;
+		}
+
+		if (firstCity == null || secondCity == null) {
+			// no more cities left... just return random
+			return NextRandom ();
+		}
+
 		float firstPheromons = PseudoSafeFloat((float) (algo.getPheromones ().getPheromone (startCity.getId (), firstCity.getId ())));
-		City secondCity = cities[1];
 		float secondPheromons = PseudoSafeFloat((float) (algo.getPheromones ().getPheromone (startCity.getId (), secondCity.getId ())));
 
 		// normalize values! [0..1]
