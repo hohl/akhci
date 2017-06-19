@@ -73,6 +73,11 @@ namespace AntAlgorithms
             return false;
         }
 
+		public List<City> getCities()
+		{
+			return this.cities;
+		}
+
         // usage: set cities before the initialization
         public void setCities(List<City> cities)
         {

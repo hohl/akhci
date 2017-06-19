@@ -5,8 +5,6 @@ using UnityEngine;
 
 public abstract class PlatformGenerator
 {
-	public virtual TspInfo CurrentTsp {	get; set; }
-
 	public virtual int ID {
 		get;
 		private set;
