@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Threading;
@@ -12,8 +12,8 @@ public sealed class Leaderboard
 	private GlobalstatsIO gs = new GlobalstatsIO();
 
 	private Leaderboard() {
-		GlobalstatsIO.api_id = "SB8HfCieIc1pSOm1iLCpHa1jnou3zo7sZgaeSttA";
-		GlobalstatsIO.api_secret = "v0yknzC9c1Qm39KsDN22Vu1bEg37JENeEmz2Wbb8";
+		GlobalstatsIO.api_id = "24xZIXHP8bd4ddCKD3zcH2nyYZu87PY9Tw8CtPsC";
+		GlobalstatsIO.api_secret = "GHeTjZwnzJ5B6Ez68HdYGnScvvGlXimD0BwjB3Hb";
 	}
 
 	public static Leaderboard Instance
@@ -24,12 +24,13 @@ public sealed class Leaderboard
 		}
 	}
 	// see 
-	public void SubmitResult(string name, double distance, int graphId, int algorithmId)
+	public void SubmitResult(string name, double distance, int graphId, int algorithmId, int score)
 	{
 		Dictionary<string, string> values = new Dictionary<string, string>();
 		values.Add("distance", distance.ToString());
 		values.Add("graph", graphId.ToString());
 		values.Add("algo", algorithmId.ToString());
+		values.Add("score", score.ToString());
 
 		if (gs.share("", name, values))
 		{
@@ -44,7 +45,7 @@ public sealed class Leaderboard
 	// No idea if that works
 	public GlobalstatsIO_Leaderboard GetScore() {
 
-		return gs.getLeaderboard ("distance", 100, new string[] { "graph","algo" });
+		return gs.getLeaderboard ("score", 100, new string[] { "graph","algo","distance"});
 
 	}
 }

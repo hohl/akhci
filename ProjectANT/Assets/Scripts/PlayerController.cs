@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 	{
 		string username = AntPrefs.Instance.GetUsername();
 		Debug.Log("Attempt to send result: " + platformCont.Result);
-		Leaderboard.Instance.SubmitResult(username, (float)platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId());
+		Leaderboard.Instance.SubmitResult(username, (float)platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId(), platformScore);
 
 		string result = null;
 		yield return hsMuellerController.StartPostScoresCoroutine(username, (int)platformCont.Result, platformCont.GetCurrentTspName(), platformCont.GetGeneratorAlgoId(), value => result = value);

@@ -124,10 +124,10 @@ public class LeaderboardMenuController : MonoBehaviour {
 		foreach (GlobalstatsIO_LeaderboardValue v in globalLeaderboard.data)
 		{
 			LeaderboardEntry entry = new LeaderboardEntry(v);
-			if (entry.Graph.Equals(currGraphName))
-			{
+			//if (entry.Graph.Equals(currGraphName))
+			//{
 				currentValues.Add(entry);
-			}
+			//}
 		}
 
 		for (int i = 0; i < leaderboardCells.Count; i++)
@@ -150,9 +150,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 		LeaderboardItemController cellController = cell.GetComponent<LeaderboardItemController>();
 		cellController.textName.text = entry.Name;
 		cellController.textRank.text = entry.Rank.ToString();
-		cellController.textDistance.text = entry.Distance.ToString();
-		cellController.textGraph.text = entry.Graph;
-		cellController.textAlgo.text = entry.Algo;
+		cellController.textScore.text = entry.Score.ToString ();
 
 		cell.SetActive(true);
 	}

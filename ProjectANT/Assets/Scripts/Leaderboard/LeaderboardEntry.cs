@@ -8,12 +8,13 @@ public class LeaderboardEntry
 	private float distance;
 	private string graph;
 	private string algo;
+	private int score;
 
 	public LeaderboardEntry(GlobalstatsIO_LeaderboardValue leaderboardValue)
 	{
 		this.name = leaderboardValue.name;
 		this.Rank = Int32.Parse(leaderboardValue.rank);
-		this.distance = Single.Parse(leaderboardValue.value);
+		this.score = Int32.Parse(leaderboardValue.value);
 		
 
 		foreach (GlobalstatsIO_Additional additional in leaderboardValue.additionals)
@@ -25,6 +26,10 @@ public class LeaderboardEntry
 			else if (additional.key == "algo")
 			{
 				this.algo = PlatformGeneratorLoader.GetGenNameById(Int32.Parse(additional.value));
+			}
+			else if (additional.key == "distance")
+			{
+				this.distance = Single.Parse(additional.value);
 			}
 		}
 	}
@@ -110,6 +115,19 @@ public class LeaderboardEntry
 		set
 		{
 			rank = value;
+		}
+	}
+		
+	public int Score
+	{
+		get
+		{
+			return score;
+		}
+
+		set
+		{
+			score = value;
 		}
 	}
 }

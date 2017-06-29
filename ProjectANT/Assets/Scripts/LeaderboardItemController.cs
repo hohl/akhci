@@ -5,5 +5,5 @@ using UnityEngine.UI;
 
 public class LeaderboardItemController : MonoBehaviour {
 
-	public Text textRank, textName, textDistance, textGraph, textAlgo;
+	public Text textRank, textName, textScore;
 }
