@@ -36,7 +36,7 @@ public class LeaderboardEntry
 
 	public LeaderboardEntry(int rank, string graph, string serverString)
 	{
-		string[] delimiters = { "ID:", " - Name: ", " - Score:", " - Comment:" };
+		string[] delimiters = { "ID:", " - Name: ", " - Score:", " - Comment:", HSController.ALGO_START};
 		string[] words = serverString.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 
 		if (words.Length < 4)
@@ -47,8 +47,20 @@ public class LeaderboardEntry
 		{
 			this.Rank = rank;
 			this.name = words[1];
-			this.distance = Int32.Parse(words[2]);
-			this.algo = "?";
+			Single.TryParse(words[2], out this.distance);
+			Int32.TryParse(words[3], out this.score);
+
+			if (words.Length > 4)
+			{
+				int id = -1;
+				Int32.TryParse(words[4], out id);
+				this.algo = PlatformGeneratorLoader.GetGenNameById(id);
+			}
+			else
+			{
+				this.algo = "?";
+			}
+
 			this.graph = graph;
 		}
 	}

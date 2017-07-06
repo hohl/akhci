@@ -99,7 +99,7 @@ public class PlatformGeneratorLoader
 		string name = null;
 		bool found = genNames.TryGetValue(id, out name);
 
-		return found ? name : "?(" + id + ")";
+		return found ? name : "?";
 	}
 
 	/**

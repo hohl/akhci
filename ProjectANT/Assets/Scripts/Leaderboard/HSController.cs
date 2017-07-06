@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 
 public class HSController : MonoBehaviour
 {
+	public static readonly string ALGO_START = "|algo:";
 	private static readonly String GAME_NAME = "ProjectANT";
 	private string secretKey = "rLdZyTAJeynUh6JDR8Sut8Yj1sLXIPWO";
 	public static string addScoreURL = "http://www.andrejmueller.com/highscoresIML/addscore.php?";
@@ -17,9 +18,9 @@ public class HSController : MonoBehaviour
 		//StartCoroutine(PostScores("Test", 1023, "test2", 1, "TravellingSnakesman", "Time3:02"));
 	}
 
-	IEnumerator PostScores(string name, int score, string tsp, int algorithm, string game, string comment)
+	IEnumerator PostScores(string name, int distance, int score, string tsp, int algorithm, string game)
 	{
-		string post_url = GetPostUrl(name, score, tsp, algorithm, game, comment);
+		string post_url = GetPostUrl(name, distance, score, tsp, algorithm, game);
 
 		WWW hs_post = new WWW(post_url);
 		print("HSPOST|" + hs_post.url);
@@ -33,9 +34,9 @@ public class HSController : MonoBehaviour
 		print("finished call:" + hs_post.url);
 	}
 
-	IEnumerator PostScores(string name, int score, string tsp, int algorithm, string game, string comment, Action<string> action)
+	IEnumerator PostScores(string name, int distance, int score, string tsp, int algorithm, string game, Action<string> action)
 	{
-		string post_url = GetPostUrl(name, score, tsp, algorithm, game, comment);
+		string post_url = GetPostUrl(name, distance, score, tsp, algorithm, game);
 
 		WWW hs_post = new WWW(post_url);
 		print("HSPOST|" + hs_post.url);
@@ -93,7 +94,7 @@ public class HSController : MonoBehaviour
 			resultText = hs_get.text.ToString();
 		}
 
-		print(resultText);
+		//print(resultText);
 		action(resultText);
 	}
 
@@ -102,11 +103,11 @@ public class HSController : MonoBehaviour
 		return new WWW(highscoreURL + "tsp=" + WWW.EscapeURL(tspName) + "&num=" + numberOfEntries + "&game=" + gameName).url;
 	}
 
-	internal string GetPostUrl(string name, int score, string tsp, int algorithm, string game, string comment)
+	internal string GetPostUrl(string name, int distance, int score, string tsp, int algorithm, string game)
 	{
 		string hash = Hash(secretKey);
 
-		return addScoreURL + "name=" + WWW.EscapeURL(name) + "&score=" + score + "&tsp=" + tsp + "&hash=" + hash + "&algorithm=" + algorithm + "&game=" + game + "&comment=" + comment;
+		return addScoreURL + "name=" + WWW.EscapeURL(name) + "&score=" + distance + "&tsp=" + tsp + "&hash=" + hash + "&algorithm=" + algorithm + "&game=" + game + "&comment=" + score + ALGO_START + algorithm;
 	}
 
 	public string Hash(string password)
@@ -114,26 +115,16 @@ public class HSController : MonoBehaviour
 		return BitConverter.ToString(new SHA1CryptoServiceProvider().ComputeHash(Encoding.Default.GetBytes(password))).Replace("-", String.Empty).ToUpper();
 	}
 
-	internal IEnumerator StartPostScoresCoroutine(string name, int score, string tsp, int algorithm, Action<string> action)
+	internal IEnumerator StartPostScoresCoroutine(string name, int distance, int score, string tsp, int algorithm, Action<string> action)
 	{
 		String dateStringForComment = DateTime.Now.ToString(@"dd\/MM\/yyyy\/HH\:mm");
-		yield return StartPostScoresCoroutine(name, score, tsp, algorithm, GAME_NAME, dateStringForComment, action);
+		yield return StartCoroutine(PostScores(name, distance, score, tsp, algorithm, GAME_NAME, action));
+	
 	}
 
-	internal void StartPostScoresCoroutine(string name, int score, string tsp, int algorithm)
+	public void StartPostScoresCoroutine(string name, int distance, int score, string tsp, int algorithm, string game)
 	{
-		String dateStringForComment = DateTime.Now.ToString(@"dd\/MM\/yyyy\/HH\:mm");
-		StartPostScoresCoroutine(name, score, tsp, algorithm, GAME_NAME, dateStringForComment);
-	}
-
-	public IEnumerator StartPostScoresCoroutine(string name, int score, string tsp, int algorithm, string game, string comment, Action<string> action)
-	{
-		yield return StartCoroutine(PostScores(name, score, tsp, algorithm, game, comment, action));
-	}
-
-	public void StartPostScoresCoroutine(string name, int score, string tsp, int algorithm, string game, string comment)
-	{
-		StartCoroutine(PostScores(name, score, tsp, algorithm, game, comment));
+		StartCoroutine(PostScores(name, distance, score, tsp, algorithm, game));
 	}
 
 	public void StartGetScoresCoroutine(string tspName, int numberOfEntries)

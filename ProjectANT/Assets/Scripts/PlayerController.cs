@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 		hsMuellerController = GetComponent<HSController>();
 
 		InitiateMenu();
+		GlobalstatsIO stats = new GlobalstatsIO();
 	}
 	
 	// Update is called once per frame
@@ -116,10 +117,10 @@ public class PlayerController : MonoBehaviour
 	{
 		string username = AntPrefs.Instance.GetUsername();
 		Debug.Log("Attempt to send result: " + platformCont.Result);
-		Leaderboard.Instance.SubmitResult(username, (float)platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId(), platformScore);
+		//Leaderboard.Instance.SubmitResult(username, (float)platformCont.Result, platformCont.GetCurrentTspId(), platformCont.GetGeneratorAlgoId(), platformScore);
 
 		string result = null;
-		yield return hsMuellerController.StartPostScoresCoroutine(username, (int)platformCont.Result, platformCont.GetCurrentTspName(), platformCont.GetGeneratorAlgoId(), value => result = value);
+		yield return hsMuellerController.StartPostScoresCoroutine(username, (int)platformCont.Result, platformScore, platformCont.GetCurrentTspName(), platformCont.GetGeneratorAlgoId(), value => result = value);
 	}
 
 	public int GetPlatformScore()

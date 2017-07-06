@@ -424,69 +424,6 @@ Prefab:
       propertyPath: m_Name
       value: LeaderboardCell
       objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
   m_IsPrefabParent: 0
@@ -924,68 +861,20 @@ Prefab:
       propertyPath: m_Name
       value: LeaderboardCell
       objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
+    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
         type: 2}
       propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
+      value: Loading
       objectReference: {fileID: 0}
     - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
         type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
+      propertyPath: m_Text
+      value: '...'
       objectReference: {fileID: 0}
     - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
         type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
+      propertyPath: m_Text
+      value: '...'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
@@ -3025,6 +2914,21 @@ Prefab:
       propertyPath: m_TagString
       value: LeaderboardHeader
       objectReference: {fileID: 0}
+    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
+        type: 2}
+      propertyPath: m_Text
+      value: '#'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
+        type: 2}
+      propertyPath: m_Text
+      value: Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
+        type: 2}
+      propertyPath: m_Text
+      value: Score
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
   m_IsPrefabParent: 0
@@ -3203,69 +3107,6 @@ Prefab:
     - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
       propertyPath: m_Name
       value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
@@ -4339,69 +4180,6 @@ Prefab:
       propertyPath: m_Name
       value: LeaderboardCell
       objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
   m_IsPrefabParent: 0
@@ -4687,69 +4465,6 @@ Prefab:
     - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
       propertyPath: m_Name
       value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
@@ -5411,69 +5126,6 @@ Prefab:
       propertyPath: m_Name
       value: LeaderboardCell
       objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
   m_IsPrefabParent: 0
@@ -6107,69 +5759,6 @@ Prefab:
       propertyPath: m_Name
       value: LeaderboardCell
       objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
   m_IsPrefabParent: 0
@@ -6190,7 +5779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1913546259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6756,69 +6345,6 @@ Prefab:
       propertyPath: m_Name
       value: LeaderboardCell
       objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
   m_IsPrefabParent: 0
@@ -6992,69 +6518,6 @@ Prefab:
     - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
       propertyPath: m_Name
       value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_Text
-      value: Distance
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Graph
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: Algo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1068322322930344, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}
-      propertyPath: m_TagString
-      value: LeaderboardCell
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642142326009718, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114920648888077326, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607399961566788, guid: 897cdc526ed144d249daf053f7e75a15,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 897cdc526ed144d249daf053f7e75a15, type: 2}

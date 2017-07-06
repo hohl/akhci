@@ -18,7 +18,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 	private GameObject leaderboardHeader;
 
 	private int pageIndex = 0;
-	private GlobalstatsIO_Leaderboard globalLeaderboard;
+	private GlobalstatsIO_Leaderboard globalLeaderboard; // not used for now
 	private HSMuellerLeaderboard muellerLeaderboard;
 	private HSController hsMuellerController;
 	private List<LeaderboardEntry> currentValues;
@@ -45,22 +45,13 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 		leaderboardCells.Sort ((x, y) => (y.transform.localPosition.y.CompareTo(x.transform.localPosition.y)));
 
-		globalLeaderboard = Leaderboard.Instance.GetScore ();
-		OnSetTsp(dropdownGraph);
+		//globalLeaderboard = Leaderboard.Instance.GetScore ();
+		yield return StartCoroutine(OnSetTsp(dropdownGraph));
 
 		buttonPreviousPage.onClick.AddListener(PreviousPage);
 		buttonNextPage.onClick.AddListener(NextPage);
 		buttonSendName.onClick.AddListener(SetUserName);
 
-		// For now, don't show mueller leaderboard
-		// TODO: make user choose graph
-		hsMuellerController = GetComponent<HSController>();
-		/*string result = null;
-		yield return hsMuellerController.StartGetScoresCoroutine(currGraph, 100, value => result = value);
-		print("The result was:" + result);
-		muellerLeaderboard = new HSMuellerLeaderboard(result);
-		FillMuellerLeaderboard();*/
-		yield return null;
 	}
 
 	private void SetUpDropdown()
@@ -77,17 +68,26 @@ public class LeaderboardMenuController : MonoBehaviour {
 		dropdownGraph.RefreshShownValue();
 
 		dropdownGraph.onValueChanged.AddListener(delegate {
-			OnSetTsp(dropdownGraph);
+			StartCoroutine(OnSetTsp(dropdownGraph));
 		});
 
 	}
 
-	private void OnSetTsp(Dropdown dropdownGraph)
+	private IEnumerator OnSetTsp(Dropdown dropdownGraph)
 	{
 		pageIndex = 0;
 		currGraphName = (dropdownGraph.options[dropdownGraph.value]).text;
-		FillLeaderboard();
+		//FillLeaderboard();
+		hsMuellerController = GetComponent<HSController>();
 
+		string result = null;
+		yield return hsMuellerController.StartGetScoresCoroutine(currGraphName, 100, value => result = value);
+		print("The result was:" + result);
+		muellerLeaderboard = new HSMuellerLeaderboard(result);
+		currentValues = new List<LeaderboardEntry>(muellerLeaderboard.Data);
+		currentValues.Sort((x,y) => y.Score - x.Score);
+		FillMuellerLeaderboard();
+		
 		buttonPreviousPage.gameObject.SetActive(false);
 		buttonNextPage.gameObject.SetActive(currentValues.Count > leaderboardCells.Count);
 	}
@@ -101,9 +101,9 @@ public class LeaderboardMenuController : MonoBehaviour {
 	{
 		for (int i = 0; i < leaderboardCells.Count; i++)
 		{
-			if (pageIndex * leaderboardCells.Count + i < muellerLeaderboard.Data.Length)
+			if (pageIndex * leaderboardCells.Count + i < currentValues.Count)
 			{
-				LeaderboardEntry entry = muellerLeaderboard.Data[pageIndex * leaderboardCells.Count + i];
+				LeaderboardEntry entry = currentValues[pageIndex * leaderboardCells.Count + i];
 				entry.Rank = pageIndex * leaderboardCells.Count + i + 1;
 				SetLeaderboardEntryToUi(leaderboardCells[i], entry);
 			}
@@ -162,7 +162,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 
 	private void NextPage() {
 		pageIndex++;
-		FillLeaderboard ();
+		FillMuellerLeaderboard ();
 
 		if ((pageIndex + 1) * leaderboardCells.Count >= currentValues.Count) {
 			buttonNextPage.gameObject.SetActive (false);
@@ -173,7 +173,7 @@ public class LeaderboardMenuController : MonoBehaviour {
 	private void PreviousPage() {
 
 		pageIndex--;
-		FillLeaderboard ();
+		FillMuellerLeaderboard ();
 
 		if (pageIndex == 0) {
 			buttonPreviousPage.gameObject.SetActive (false);
